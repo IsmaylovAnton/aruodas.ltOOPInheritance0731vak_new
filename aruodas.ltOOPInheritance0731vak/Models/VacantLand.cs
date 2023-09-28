@@ -210,6 +210,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                 }
             }
         }
+     
 
             public void MarkDetails()
             {
