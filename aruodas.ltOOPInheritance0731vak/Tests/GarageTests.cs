@@ -98,6 +98,5 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             driver.FindElement(By.Id("loginAruodas")).Click();
         }
     }
-    
 }
 
