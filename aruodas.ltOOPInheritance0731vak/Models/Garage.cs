@@ -22,11 +22,11 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public string Settlement { get; set; }
         public string Quarter { get; set; }
         public string Street { get; set; }
-        public string GarageParkPlace { get; set; } // checkBoxes
+        public int GarageParkPlace { get; set; }
         public string Parkings { get; set; }
         public string Number { get; set; }
         public string Area { get; set; }
-        public string GarageBoxes { get; set; }  //Type
+        public string GarageBoxes { get; set; }
         public string Price { get; set; }
         public string PhoNo { get; set; }
         public string Email { get; set; }
@@ -40,8 +40,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public bool CheckEmail { get; set; }
         public bool CheckChat { get; set; }
 
-
-        public Garage(string city, string settlement, string quarter, string street, string garageParkPlace, string parkings, string number, string area, string garageBoxes, string price, string phoNo, string email, string video, string tour, string rc, string description, string[] details, string boxes,
+        public Garage(string city, string settlement, string quarter, string street, int garageParkPlace, string parkings, string number, string area, string garageBoxes, string price, string phoNo, string email, string video, string tour, string rc, string description, string[] details,
             int carQuantity, bool checkRules, bool checkEmail, bool checkChat) : base()
         {
             this.City = city;
@@ -49,7 +48,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             this.Quarter = quarter;
             this.Street = street;
             this.GarageParkPlace = garageParkPlace;
-            this.Parkings = parkings; 
+            this.Parkings = parkings;
             this.Number = number;
             this.Area = area;
             this.GarageBoxes = garageBoxes;
@@ -88,6 +87,37 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             agreeToRUles();
             Photo();
             Driver.FindElement(By.Id("submitFormButton")).Click();
+        }
+        public void Accommodates()
+        {
+
+            for (int i = 0; i < CarQuantity; i++)
+
+                switch (Details[i])
+                {
+                    case "1":
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[1]/div[2]")).Click();
+                        break;
+                    case "2":
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[2]/div[2]")).Click();
+                        break;
+                    case "3":
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[3]/div[2]")).Click();
+                        break;
+                    case "4":
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[4]/div[2]")).Click();
+                        break;
+                    case "Other":
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[5]/div[2]")).Click();
+                        break;
+
+                    default:
+                        {
+                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/span/input")).Click();
+                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/span/div")).SendKeys(CarQuantity.ToString());
+                            break;
+                        }
+                }
         }
 
         public void LocationGeneration(int xpath, int pos, string searchText)
@@ -136,9 +166,9 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             LocationGeneration(3, pos, this.Street);
         }
 
-        public void GarageOrParking()  // dar neveikia
+        public void GarageOrParking()  // dar neveikia!!!!
         {
-            for (int i = 0; i < garageParkPlace.Length; i++)
+            for (int i = 0; i < GarageParkPlace.Length; i++)
             {
                 switch (garageParkPlace[i])
                 {
@@ -158,7 +188,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             {
                 Driver.FindElement(By.XPath("//*[@id=\"showMoreFields\"]/span")).Click();
                 {
-                    for (int i = 0; i < garageBoxes.Length; i++)
+                    for (int i = 0; i < GarageBoxes.Length; i++)
 
                         switch (Details[i])
                         {
@@ -187,7 +217,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             {
                 Driver.FindElement(By.XPath("//*[@id=\"showMoreFields\"]/span")).Click();
                 {
-                    for (int i = 0; i < parkings.Length; i++)
+                    for (int i = 0; i < Parkings.Length; i++)
 
                         switch (Details[i])
                         {
@@ -205,40 +235,6 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                                 break;
                         }
                 }
-            }
-        }
-
-        public void Accommodates()  // ok
-        {
-            {
-                for (int i = 0; i < carQuantity.Length; i++)
-
-                    switch (Details[i])
-                    {
-                        case "1":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[1]/div[2]")).Click();
-                            break;
-                        case "2":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[2]/div[2]")).Click();
-                            break;
-                        case "3":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[3]/div[2]")).Click();
-                            break;
-                        case "4":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[4]/div[2]")).Click();
-                            break;
-                        case "Other":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[5]/div[2]")).Click();
-                            break;
-
-                        default:
-
-                            {
-                                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/span/input")).Click();
-                                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/span/div")).SendKeys(carQuantity);
-                            }
-                            break;
-                    }
             }
         }
 
@@ -314,7 +310,6 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                 agreeToRulesCheckboxLabel.Click();
             }
         }
-
 
     }
 }

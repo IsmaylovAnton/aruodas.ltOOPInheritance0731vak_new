@@ -17,5 +17,6 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
           this.Driver = DriverClass.Driver;
           this.Wait = DriverClass.Wait;
         }
+
     }
 }

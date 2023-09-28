@@ -87,6 +87,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Driver.FindElement(By.Id("submitFormButton")).Click();
         }
 
+        
         public void LocationGeneration(int xpath, int pos, string searchText)
         {
             string[] Xpaths = { "//*[@id=\"newObjectForm\"]/ul/li[3]/span[1]/span", "//*[@id=\"district\"]/span", "//*[@id=\"quartalField\"]/span[1]/span[2]", "//*[@id=\"streetField\"]/span[1]/span[2]" };

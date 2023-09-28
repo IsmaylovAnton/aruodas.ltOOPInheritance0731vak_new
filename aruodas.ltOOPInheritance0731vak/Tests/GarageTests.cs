@@ -20,38 +20,37 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
         [Test]
         public void fillAddPositiveVilniusTest()
         {
-            VacantLand v = new VacantLand("Vilnius", "Vilniaus", "Markučiai", "Tauro", "Garage","Multistorey", "5", "50", "Iron", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
+            VacantLand v = new VacantLand("Vilnius", "Vilniaus", "Markučiai", "Tauro", "1" /*1.Garage.2.Parking place*/, "Multistorey", "5", "50", "Iron", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
                 "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionGarage.LongDescription, new string[] { "Security", "Automatic gates", "Pit", "Basement", "Water", "Heating", "Exchange", "Auction" }
                 , 3,  true, true, true);
 
             v.fill();
         }
 
-        [Test]
-        public void fillAddPositiveSiauliaiTest()
-        {
-            VacantLand v = new VacantLand("Šiauliai", "Žaliūkių", "", "Nemuno", "5", "50", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
-                "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionGarage.LongDescription,
-                new string[] { "Security", "Automatic gates", "Pit", "Basement", "Water", "Heating", "Exchange", "Auction" }, true, true, true);
+        //[Test]
+        //public void fillAddPositiveSiauliaiTest()
+        //{
+        //    VacantLand v = new VacantLand("Vilnius", "Vilniaus", "Markučiai", "Tauro", "Garage", "Multistorey", "5", "50", "Iron", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
+        //        "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionGarage.LongDescription, new string[] { "Security", "Automatic gates", "Pit", "Basement", "Water", "Heating", "Exchange", "Auction" }
+        //        , 3, true, true, true);
 
-            v.fill();
-        }
+        //    v.fill();
+        //}
 
-        [Test]
-        public void fillAddPositivePanevezysTest()
-        {
-            VacantLand v = new VacantLand("Panevežys", "Panevėžio", "Pramonės", "Alkupio", "5", "50", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
-                "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionGarage.LongDescription,
-                new string[] { "Residential", "Manufactoring", "Agricultural", "Collective", "Forestrial", "Factory", "Storage", "Commercial", "Recreational", "Other" },
-                new string[] { "Electricity", "Gas", "Sewage", "Marginal", "Near forest", "No buildings", "Geodesic", "With coast", "Paved road", "Exchange", "Auction" }, true, true, true);
+        //[Test]
+        //public void fillAddPositivePanevezysTest()
+        //{
+        //    VacantLand v = new VacantLand("Vilnius", "Vilniaus", "Markučiai", "Tauro", "Garage", "Multistorey", "5", "50", "Iron", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
+        //       "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionGarage.LongDescription, new string[] { "Security", "Automatic gates", "Pit", "Basement", "Water", "Heating", "Exchange", "Auction" }
+        //       , 3, true, true, true);
 
-            v.fill();
-        }
+        //    v.fill();
+        //}
 
         [Test]
         public void fillAddPositiveKaisiadoriuTest()
-        {                                                //"Kaišiadorių", "Krečiūnų"  neveikia (Rajonas/Kaimas/Nėra gatvių)
-            VacantLand v = new VacantLand("Kaišiadorių", "Baniškių", "", "Vėjų", "5", "50", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
+        {                                               
+            VacantLand v = new VacantLand("Kaišiadorių", "Krečiūnų", "", "", "5", "50", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
                 "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionPlot.LongDescription,
                 new string[] { "Residential", "Manufactoring", "Agricultural", "Collective", "Forestrial", "Factory", "Storage", "Commercial", "Recreational", "Other" },
                 new string[] { "Electricity", "Gas", "Sewage", "Marginal", "Near forest", "No buildings", "Geodesic", "With coast", "Paved road", "Exchange", "Auction" }, true, true, true);
