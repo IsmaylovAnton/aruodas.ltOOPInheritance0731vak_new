@@ -118,7 +118,6 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         {
             if (GarageParkPlace == "Garage")
             {
-                Driver.FindElement(By.XPath("//*[@id=\"parking_checkbox\"]/div/label")).Click();
                 GarageType();
                 GarageFeatures();
             }
@@ -178,38 +177,32 @@ namespace aruodas.ltOOPInheritance0731vak.Models
 
         public void GarageType()
         {
+            switch (GarageDetails)
             {
-                Driver.FindElement(By.XPath("//*[@id=\"showMoreFields\"]/span")).Click();
-                {
-                    switch (GarageDetails)
-                    {
-                        case 1: //Stone
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[1]/div[2]")).Click();
-                            break;
-                        case 2: //Iron
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[2]/div[2]")).Click();
-                            break;
-                        case 3: //Underground:
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[3]/div[2]")).Click();
-                            break;
-                        case 4: //Multistory:
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[4]/div[2]")).Click();
-                            break;
-                        case 5: //Other:
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[5]/div[2]")).Click();
-                            break;
-                    }
-                }
+                case 1: //Stone
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[1]/div[2]")).Click();
+                    break;
+                case 2: //Iron
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[2]/div[2]")).Click();
+                    break;
+                case 3: //Underground:
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[3]/div[2]")).Click();
+                    break;
+                case 4: //Multistory:
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[4]/div[2]")).Click();
+                    break;
+                case 5: //Other:
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[5]/div[2]")).Click();
+                    break;
             }
         }
 
 
         public void GarageFeatures()
         {
-            Driver.FindElement(By.XPath("//*[@id=\"showMoreFields\"]/span")).Click();
-      
+            Driver.FindElement(By.Id("showMoreFields")).Click();
             for (int i = 0; i < GarageProperties.Length; i++)
-
+            {
                 switch (GarageProperties[i])
                 {
                     case "Security":
@@ -231,42 +224,39 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[22]/div/div[6]/label")).Click();
                         break;
                     case "Exchange":
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[22]/div/div[7]/label")).Click();
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[26]/div/div/div/label")).Click();
                         break;
                     case "Auction":
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[22]/div/div[8]/label")).Click();
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[27]/div/div/div/label")).Click();
                         break;
 
-                }
-        }
-
-        public void ParkingType()
-        {
-            {
-                Driver.FindElement(By.XPath("//*[@id=\"showMoreFields\"]/span")).Click();
-                {
-                    switch (ParkingDetails)
-                    {
-                        case "Underground parking":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[1]/div[2]")).Click();
-                            break;
-                        case "Parking lot":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[2]/div[2]")).Click();
-                            break;
-                        case "Multistorey car park":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[3]/div[2]")).Click();
-                            break;
-                        case "Other":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[4]/div[2]")).Click();
-                            break;
-                    }
                 }
             }
         }
 
+        public void ParkingType()
+        {
+            switch (ParkingDetails)
+            {
+                case "Underground parking":
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[1]/div[2]")).Click();
+                    break;
+                case "Parking lot":
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[2]/div[2]")).Click();
+                    break;
+                case "Multistorey car park":
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[3]/div[2]")).Click();
+                    break;
+                case "Other":
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[4]/div[2]")).Click();
+                    break;
+            }
+
+        }
+
         public void ParkingFeatures()
         {
-            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[21]")).Click();
+            Driver.FindElement(By.Id("showMoreFields")).Click();
             for (int i = 0; i < GarageProperties.Length; i++)
             {
                 switch (ParkingProperties[i])
@@ -298,7 +288,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                     case "Auction":
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[27]/div/div/div/label")).Click();
                         break;
-
+                                         
                 }
             }
         }
