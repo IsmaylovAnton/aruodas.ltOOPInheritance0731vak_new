@@ -14,9 +14,9 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
         [Test]
         public void fillAddPositiveVilniusTest()
         {
-            Garage g = new Garage ("Vilnius", "Vilniaus", "Markučiai", "Tauro", "Garage", 4, "Parking lot", "5", "50", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
-                "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionGarage.LongDescription, new string[] {"Security", "Automatic gates", "Pit", "Basement", "Water", "Heating", "Exchange", "Auction" },
-               new string[] { "Security", "Automatic gates", "Heating", "Lock", "Fenced", "Under the roof", "Storeroom", "Exchange", "Auction"}, 3,  true, true, true);
+            Garage g = new Garage ("Vilnius", "Vilniaus", "Markučiai", "Tauro", "Parking place", 4, "Parking lot", "5", "50", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
+                "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionGarage.LongDescription, new string[] { "Security", "Automatic gates", "Heating", "Lock", "Fenced", "Under the roof", "Storeroom", "Exchange", "Auction"},
+                new string[] { "Security", "Automatic gates", "Heating", "Lock", "Fenced", "Under the roof", "Storeroom", "Exchange", "Auction" }, 3,  true, true, true);
 
             g.fill();
         }
