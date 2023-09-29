@@ -30,21 +30,20 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public int CarQuantity { get; set; }
         public string[] GarageProperties { get; set; }
         public int ParkingDetails { get; set; }
-
-
+        public string[] ParkingProperties { get; set; }
+        public string Description { get; set; }
+        public string YoutubeVideo { get; set; }
+        public string TripleDTour { get; set; }
         public string Price { get; set; }
         public string PhoNo { get; set; }
         public string Email { get; set; }
-        public string Video { get; set; }
-        public string Tour { get; set; }
-        public string Description { get; set; }
-        public string[] ParkingProperties { get; set; }
         public bool CheckRules { get; set; }
         public bool CheckEmail { get; set; }
         public bool CheckChat { get; set; }
 
-        public Garage(string city, string settlement, string quarter, string street, string garageParkPlace, string number, string rc, string area, int garageDetails, int carQuantity, string[] garageProperties, int parkingDetails, /**/string price, string phoNo, string email, string video, string tour, string description,
-            string[] parkingProperties, bool checkRules, bool checkEmail, bool checkChat) : base()
+
+        public Garage(string city, string settlement, string quarter, string street, string garageParkPlace, string number, string rc, string area, int garageDetails, int carQuantity, string[] garageProperties, int parkingDetails, string[] parkingProperties, string description, string youtubeVideo, string tripleDTour, string price, 
+            string phoNo, string email, bool checkRules, bool checkEmail, bool checkChat) : base()
         {
             this.City = city;
             this.Settlement = settlement;
@@ -58,18 +57,13 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             this.CarQuantity = carQuantity;
             this.GarageProperties = garageProperties;
             this.ParkingDetails = parkingDetails;
-
-
+            this.ParkingProperties = parkingProperties;
+            this.Description = description;
+            this.YoutubeVideo = youtubeVideo;
+            this.TripleDTour = tripleDTour;
             this.Price = price;
             this.PhoNo = phoNo;
             this.Email = email;
-            this.Video = video;
-            this.Tour = tour;
-            
-            this.Description = description;
-           
-            this.ParkingProperties = parkingProperties;
-           
             this.CheckRules = true;
             this.CheckEmail = true;
             this.CheckChat = true;
@@ -83,8 +77,8 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Driver.FindElement(By.Name("RCNumber")).SendKeys(this.RC);
             Driver.FindElement(By.Id("fieldFAreaOverAll")).SendKeys(this.Area);
             Driver.FindElement(By.Name("notes_lt")).SendKeys(this.Description);
-            Driver.FindElement(By.Name("Video")).SendKeys(this.Video);
-            Driver.FindElement(By.Name("tour_3d")).SendKeys(this.Tour);
+            Driver.FindElement(By.Name("Video")).SendKeys(this.YoutubeVideo);
+            Driver.FindElement(By.Name("tour_3d")).SendKeys(this.TripleDTour);
             Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[38]/span[1]/input")).SendKeys(this.PhoNo);
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/span[1]/input")).Clear();

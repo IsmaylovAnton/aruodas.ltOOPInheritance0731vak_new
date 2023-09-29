@@ -18,7 +18,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
         {
             string Region = "Vilnius"; // Miestas arba rajonas
             string Settlement = "Vilniaus"; // Miestas arba kaimas
-            string Microdistrict = "Lazdydai"; // Mikrorajonas
+            string Microdistrict = "Lazdynai"; // Mikrorajonas
             string Street = "Raguvos"; // Gatvė
             string GarageOrParking = "Garage"; // Garažas ar parkingas
             string Number = "777"; // Objekto numeris
@@ -27,12 +27,19 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             int GarageType = 2; // Garažo tipas: 1. Mūrinis; 2. Geležinis; 3. Požeminis; 4. Daugiaukštis; 5. Kita
             int Accommodation = 3; //Telpa automobilių
             string[] GarageFeatures = new string[] { "Security", "Automatic gates", "Pit", "Basement", "Water", "Heating", "Exchange", "Auction" }; // Garažo ypatybės: 1. Apsauga; 2. Automatiniai vartai; 3. Duobė; 4. Rūsys; 5. Vanduo; 6. Šildymas; 7. Domina keitimas; 7. Varžytinės/aukcionas 
-            int ParkingType = 1; // Parkingo tipas: 1. Undergound parking; 2. Parking lot; 3. Multistorey car park; 4. Other
+            int ParkingType = 1; // Parkingo tipas: 1. Požeminėje aikštelėje; 2.Antžeminėje aikštelėje; 3. Daugiaaukštėje aikštelėje; 4. Kita
+            string[] ParkingFeatures = new string[] { "Security", "Automatic gates", "Heating", "Lock", "Fenced", "Under the roof", "Storeroom", "Exchange", "Auction" }; // 1. Apsauga; 2. Automatiniai vartai; 3. Šildymas; 4. Užraktas; 5. Aptverta; 6. Po stogu; 7. Su ssandėliuku 
+            string Description = DescriptionGarage.LongDescription; // Aprašymas
+            string Youtube = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // Youtube nuoroda
+            string TripleDTour = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // 3D nuoroda
+            string Price = "500000"; // Kaina
+            string PhoNo = "+37065432107"; // Telefono numeris
+            string Email = "nesakysiu@niekam.ut"; // Elektros 
+            bool CheckRules = true; // Išjungti kontaktavimo el. paštu funkciją skelbime
+            bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
+            bool CheckChat = true; // Sutinku su portalo taisyklėmis
 
-
-
-            Garage g = new Garage (Region, Settlement, Microdistrict, Street, GarageOrParking, Number, RC, Area, GarageType, Accommodation, GarageFeatures, ParkingType, "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
-                "https://www.youtube.com/watch?v=31gM5gjw8A8", DescriptionGarage.LongDescription, new string[] { "Security", "Automatic gates", "Heating", "Lock", "Fenced", "Under the roof", "Storeroom", "Exchange", "Auction"}, true, true, true);
+            Garage g = new Garage (Region, Settlement, Microdistrict, Street, GarageOrParking, Number, RC, Area, GarageType, Accommodation, GarageFeatures, ParkingType, ParkingFeatures, Description, Youtube, TripleDTour, Price,  PhoNo, Email, CheckRules, CheckEmail, CheckChat);
 
             g.fill();
         }
@@ -40,16 +47,33 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
         [Test]
         public void fillAddPositiveVilniusParkingTest()
         {
-            Garage g = new Garage(Region, Settlement, Microdistrict, Street, GarageOrParking, Number, RC, Area, GarageType, Accommodation, GarageFeatures, Parking, "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
-                "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionGarage.LongDescription, new string[] { "Security", "Automatic gates", "Pit", "Basement", "Water", "Heating", "Exchange", "Auction"},
-                new string[] { "Security", "Automatic gates", "Heating", "Lock", "Fenced", "Under the roof", "Storeroom", "Exchange", "Auction"}, 3, true, true, true);
+            string Region = "Vilnius"; // Miestas arba rajonas
+            string Settlement = "Vilniaus"; // Miestas arba kaimas
+            string Microdistrict = "Lazdynai"; // Mikrorajonas
+            string Street = "Raguvos"; // Gatvė
+            string GarageOrParking = "Parking place"; // 1. Garage; 2. Parking place (Garažas ar parkingas)
+            string Number = "777"; // Objekto numeris
+            string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
+            string Area = "50"; // Plotas
+            int GarageType = 2; // Garažo tipas: 1. Mūrinis; 2. Geležinis; 3. Požeminis; 4. Daugiaukštis; 5. Kita
+            int Accommodation = 3; //Telpa automobilių
+            string[] GarageFeatures = new string[] { "Security", "Automatic gates", "Pit", "Basement", "Water", "Heating", "Exchange", "Auction" }; // Garažo ypatybės: 1. Apsauga; 2. Automatiniai vartai; 3. Duobė; 4. Rūsys; 5. Vanduo; 6. Šildymas; 7. Domina keitimas; 7. Varžytinės/aukcionas 
+            int ParkingType = 1; // Parkingo tipas: 1. Požeminėje aikštelėje; 2.Antžeminėje aikštelėje; 3. Daugiaaukštėje aikštelėje; 4. Kita
+            string[] ParkingFeatures = new string[] { "Security", "Automatic gates", "Heating", "Lock", "Fenced", "Under the roof", "Storeroom", "Exchange", "Auction" }; // 1. Apsauga; 2. Automatiniai vartai; 3. Šildymas; 4. Užraktas; 5. Aptverta; 6. Po stogu; 7. Su ssandėliuku 
+            string Description = DescriptionGarage.LongDescription; // Aprašymas
+            string Youtube = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // Youtube nuoroda
+            string TripleDTour = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // 3D nuoroda
+            string Price = "500000"; // Kaina
+            string PhoNo = "+37065432107"; // Telefono numeris
+            string Email = "nesakysiu@niekam.ut"; // Elektros 
+            bool CheckRules = true; // Išjungti kontaktavimo el. paštu funkciją skelbime
+            bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
+            bool CheckChat = true; // Sutinku su portalo taisyklėmis
+
+            Garage g = new Garage(Region, Settlement, Microdistrict, Street, GarageOrParking, Number, RC, Area, GarageType, Accommodation, GarageFeatures, ParkingType, ParkingFeatures, Description, Youtube, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
 
             g.fill();
         }
-
-
-
-
 
         [OneTimeSetUp]
         public void Initialize()
