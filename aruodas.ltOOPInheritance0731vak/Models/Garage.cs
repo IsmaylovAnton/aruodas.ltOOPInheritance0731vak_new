@@ -23,46 +23,53 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public string Quarter { get; set; }
         public string Street { get; set; }
         public string GarageParkPlace { get; set; }
-        public int GarageDetails { get; set; }
-        public string ParkingDetails { get; set; }
         public string Number { get; set; }
+        public string RC { get; set; }
         public string Area { get; set; }
+        public int GarageDetails { get; set; }
+        public int CarQuantity { get; set; }
+        public string[] GarageProperties { get; set; }
+        public int ParkingDetails { get; set; }
+
+
         public string Price { get; set; }
         public string PhoNo { get; set; }
         public string Email { get; set; }
         public string Video { get; set; }
         public string Tour { get; set; }
-        public string RC { get; set; }
         public string Description { get; set; }
-        public string[] GarageProperties { get; set; }
         public string[] ParkingProperties { get; set; }
-        public int CarQuantity { get; set; }
         public bool CheckRules { get; set; }
         public bool CheckEmail { get; set; }
         public bool CheckChat { get; set; }
 
-        public Garage (string city, string settlement, string quarter, string street, string garageParkPlace, int garageDetails, string parkingDetails, string number, string area, string price, string phoNo, string email, string video, string tour, string rc, string description, string[] garageProperties,
-            string[]parkingProperties, int carQuantity, bool checkRules, bool checkEmail, bool checkChat) : base()
+        public Garage(string city, string settlement, string quarter, string street, string garageParkPlace, string number, string rc, string area, int garageDetails, int carQuantity, string[] garageProperties, int parkingDetails, /**/string price, string phoNo, string email, string video, string tour, string description,
+            string[] parkingProperties, bool checkRules, bool checkEmail, bool checkChat) : base()
         {
             this.City = city;
             this.Settlement = settlement;
             this.Quarter = quarter;
             this.Street = street;
             this.GarageParkPlace = garageParkPlace;
-            this.GarageDetails = garageDetails;
-            this.ParkingDetails = parkingDetails;
             this.Number = number;
+            this.RC = rc;
             this.Area = area;
+            this.GarageDetails = garageDetails;
+            this.CarQuantity = carQuantity;
+            this.GarageProperties = garageProperties;
+            this.ParkingDetails = parkingDetails;
+
+
             this.Price = price;
             this.PhoNo = phoNo;
             this.Email = email;
             this.Video = video;
             this.Tour = tour;
-            this.RC = rc;
+            
             this.Description = description;
-            this.GarageProperties = garageProperties;
+           
             this.ParkingProperties = parkingProperties;
-            this.CarQuantity = carQuantity;
+           
             this.CheckRules = true;
             this.CheckEmail = true;
             this.CheckChat = true;
@@ -82,14 +89,14 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[38]/span[1]/input")).SendKeys(this.PhoNo);
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/span[1]/input")).Clear();
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/span[1]/input")).SendKeys(this.Email);
-            Accommodates();
+            Accommodation();
             emailCheck();
             chatCheck();
             agreeToRUles();
             Photo();
             //Driver.FindElement(By.Id("submitFormButton")).Click();
         }
-        public void Accommodates()
+        public void Accommodation()
         {
             switch (CarQuantity)
             {
@@ -114,21 +121,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             }
         }
 
-        public void GarageOrParking()
-        {
-            if (GarageParkPlace == "Garage")
-            {
-                GarageType();
-                GarageFeatures();
-            }
-            else if (GarageParkPlace == "Parking place")
-            {
-                Driver.FindElement(By.XPath("//*[@id=\"whole_building_checkbox\"]/div/label")).Click();
-                ParkingType();
-                ParkingFeatures();
-            }
-        }
-
+       
         public void LocationGeneration(int xpath, int pos, string searchText)
         {
             string[] Xpaths = { "//*[@id=\"newObjectForm\"]/ul/li[3]/span[1]/span", "//*[@id=\"district\"]/span", "//*[@id=\"quartalField\"]/span[1]/span[2]", "//*[@id=\"streetField\"]/span[1]/span[2]" };
@@ -153,6 +146,21 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                         break;
                     }
                 }
+            }
+        }
+
+        public void GarageOrParking()
+        {
+            if (GarageParkPlace == "Garage")
+            {
+                GarageType();
+                GarageFeatures();
+            }
+            else if (GarageParkPlace == "Parking place")
+            {
+                Driver.FindElement(By.XPath("//*[@id=\"whole_building_checkbox\"]/div/label")).Click();
+                ParkingType();
+                ParkingFeatures();
             }
         }
 
@@ -197,10 +205,10 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             }
         }
 
-
         public void GarageFeatures()
         {
             Driver.FindElement(By.Id("showMoreFields")).Click();
+            Thread.Sleep(1000);
             for (int i = 0; i < GarageProperties.Length; i++)
             {
                 switch (GarageProperties[i])
@@ -238,16 +246,16 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         {
             switch (ParkingDetails)
             {
-                case "Underground parking":
+                case 1: // "Underground parking":
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[1]/div[2]")).Click();
                     break;
-                case "Parking lot":
+                case 2: // "Parking lot":
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[2]/div[2]")).Click();
                     break;
-                case "Multistorey car park":
+                case 3: // "Multistorey car park":
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[3]/div[2]")).Click();
                     break;
-                case "Other":
+                case 4: //"Other":
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[4]/div[2]")).Click();
                     break;
             }
@@ -257,7 +265,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public void ParkingFeatures()
         {
             Driver.FindElement(By.Id("showMoreFields")).Click();
-            for (int i = 0; i < GarageProperties.Length; i++)
+            for (int i = 0; i < ParkingProperties.Length; i++)
             {
                 switch (ParkingProperties[i])
                 {
@@ -288,7 +296,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                     case "Auction":
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[27]/div/div/div/label")).Click();
                         break;
-                                         
+
                 }
             }
         }

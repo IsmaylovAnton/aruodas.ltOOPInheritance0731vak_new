@@ -22,10 +22,10 @@ namespace aruodas.ltOOPInheritance0731vak.Models
     internal class VacantLand : RealEstate
     {
         public string City { get; set; }
-        public string Settlement { get; set; }
-        public string Quarter { get; set; }
-        public string Street { get; set; }
-        public string Number { get; set; }
+        public string Settlement {  get; set; } 
+        public string Quarter {  get; set; }    
+        public string Street {  get; set; } 
+        public string Number {  get; set; }
         public string Area { get; set; }
         public string Price { get; set; }
         public string PhoNo { get; set; }
@@ -87,7 +87,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Driver.FindElement(By.Id("submitFormButton")).Click();
         }
 
-
+        
         public void LocationGeneration(int xpath, int pos, string searchText)
         {
             string[] Xpaths = { "//*[@id=\"newObjectForm\"]/ul/li[3]/span[1]/span", "//*[@id=\"district\"]/span", "//*[@id=\"quartalField\"]/span[1]/span[2]", "//*[@id=\"streetField\"]/span[1]/span[2]" };
@@ -95,8 +95,8 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Driver.FindElement(By.XPath(Xpaths[xpath])).Click();
             IWebElement containerElement = Driver.FindElements(By.ClassName("dropdown-input-values-address"))[pos];
             IList<IWebElement> elements = containerElement.FindElements(By.TagName("li"));
-
-            if (elements.Count > 19)
+                      
+            if (elements.Count > 19) 
             {
                 containerElement.FindElement(By.TagName("input")).SendKeys(searchText);
                 Thread.Sleep(1000);
@@ -114,13 +114,13 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                 }
             }
         }
-
+       
         public void ChooseLocation()
         {
             int pos = 3;
-            LocationGeneration(0, 0, this.City);
+            LocationGeneration( 0, 0, this.City);
             Thread.Sleep(1000);
-            LocationGeneration(1, 1, this.Settlement);
+            LocationGeneration( 1, 1, this.Settlement);
             try
             {
                 LocationGeneration(2, 2, this.Quarter);
@@ -132,14 +132,14 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                 Console.WriteLine("neradom 3-cio");
             }
             LocationGeneration(3, pos, this.Street);
-        }
+        }          
 
-        public void Photo()
-        {
-            IWebElement chooseFile = Driver.FindElement(By.XPath("//*[@id=\"uploadPhotoBtn\"]/input"));
-            chooseFile.SendKeys("C:\\Users\\user\\Desktop\\kauno-r-sav-virbaliskiu-k-metu-g-namu.jpg");
-        }
-
+            public void Photo()
+            {
+                IWebElement chooseFile = Driver.FindElement(By.XPath("//*[@id=\"uploadPhotoBtn\"]/input"));
+                chooseFile.SendKeys("C:\\Users\\user\\Desktop\\kauno-r-sav-virbaliskiu-k-metu-g-namu.jpg");
+            }
+        
         public void emailCheck()
         {
             IWebElement emailCheckbox = Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[36]/div/div/div/label"));
@@ -210,13 +210,13 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                 }
             }
         }
+     
 
-
-        public void MarkDetails()
-        {
-            Driver.FindElement(By.XPath("//*[@id=\"showMoreFields\"]/span")).Click();
-            for (int i = 0; i < Details.Length; i++)
-
+            public void MarkDetails()
+            {
+                Driver.FindElement(By.XPath("//*[@id=\"showMoreFields\"]/span")).Click();
+                for (int i = 0; i < Details.Length; i++)
+            
                 switch (Details[i])
                 {
                     case "Electricity":
@@ -253,26 +253,26 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[23]/div/div/div/label")).Click();
                         break;
                 }
+            
+
+                    
+               
+            
+
+            }
+
+   
+
+
+       
 
 
 
 
 
-
-        }
-
-
-
-
-
-
-
-
-
-
-
+    
     }
-}
+    }
  
 
 
