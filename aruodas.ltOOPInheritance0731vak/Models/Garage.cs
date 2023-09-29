@@ -80,8 +80,8 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Driver.FindElement(By.Name("tour_3d")).SendKeys(this.Tour);
             Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[38]/span[1]/input")).SendKeys(this.PhoNo);
-            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[38]/span[1]/input")).Clear();
-            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[35]/span[1]/input")).SendKeys(this.Email);
+            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/span[1]/input")).Clear();
+            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/span[1]/input")).SendKeys(this.Email);
             Accommodates();
             emailCheck();
             chatCheck();
@@ -97,13 +97,13 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[1]/div[2]")).Click();
                     break;
                 case 2:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[2]/div[2]")).Click();
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/div[2]/div[2]")).Click();
                     break;
                 case 3:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[3]/div[2]")).Click();
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/div[3]/div[2]")).Click();
                     break;
                 case 4:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[4]/div[2]")).Click();
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/div[4]/div[2]")).Click();
                     break;
 
                 default:
@@ -209,10 +209,9 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public void GarageFeatures()
         {
             Driver.FindElement(By.XPath("//*[@id=\"showMoreFields\"]/span")).Click();
-          
+
             for (int i = 0; i < GarageProperties.Length; i++)
 
-            
                 switch (GarageProperties[i])
                 {
                     case "Security":
@@ -304,17 +303,16 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         }
 
 
-        
-
         public void Photo()
         {
             IWebElement chooseFile = Driver.FindElement(By.XPath("//*[@id=\"uploadPhotoBtn\"]/input"));
-            chooseFile.SendKeys("C:\\Users\\user\\Desktop\\Garazgaraziukas.png");
+            chooseFile.SendKeys("C:\\Users\\user\\Desktop\\Aruodas\\Garaz\\sip-medinis-garazas-3.jpg");
         }
 
         public void emailCheck()
         {
-            IWebElement emailCheckbox = Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[40]/span/label/span"));
+            IWebElement chatCheckbox = Driver.FindElement(By.Id("cbdont_show_in_ads"));
+            IWebElement emailCheckbox = Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[40]/div/div/div/label"));
 
             if (!emailCheckbox.Selected)
             {
@@ -325,7 +323,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public void chatCheck()
         {
             IWebElement chatCheckbox = Driver.FindElement(By.Id("cbdont_want_chat"));
-            IWebElement emailCheckboxLabel = Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[41]/div/div/div/label/span"));
+            IWebElement emailCheckboxLabel = Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[41]/div/div/div/label"));
 
             if (!chatCheckbox.Selected)
             {
