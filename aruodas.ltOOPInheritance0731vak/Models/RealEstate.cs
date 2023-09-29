@@ -18,5 +18,6 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
           this.Wait = DriverClass.Wait;
         }
 
+
     }
 }

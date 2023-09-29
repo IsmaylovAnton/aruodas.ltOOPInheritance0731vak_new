@@ -22,10 +22,10 @@ namespace aruodas.ltOOPInheritance0731vak.Models
     internal class VacantLand : RealEstate
     {
         public string City { get; set; }
-        public string Settlement {  get; set; } 
-        public string Quarter {  get; set; }    
-        public string Street {  get; set; } 
-        public string Number {  get; set; }
+        public string Settlement { get; set; }
+        public string Quarter { get; set; }
+        public string Street { get; set; }
+        public string Number { get; set; }
         public string Area { get; set; }
         public string Price { get; set; }
         public string PhoNo { get; set; }
@@ -39,10 +39,10 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public bool CheckRules { get; set; }
         public bool CheckEmail { get; set; }
         public bool CheckChat { get; set; }
-          
+
 
         public VacantLand(string city, string settlement, string quarter, string street, string number, string area, string price, string phoNo, string email, string video, string tour, string rc, string description,
-            string[] checkBoxes, string[] details, bool checkRules, bool checkEmail, bool checkChat) : base()
+    string[] checkBoxes, string[] details, bool checkRules, bool checkEmail, bool checkChat) : base()
         {
             this.City = city;
             this.Settlement = settlement;
@@ -59,9 +59,9 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             this.Description = description;
             this.CheckBoxes = checkBoxes;
             this.Details = details;
-            this.CheckRules = true;
-            this.CheckEmail = true;
-            this.CheckChat = true;
+            this.CheckRules = checkRules;
+            this.CheckEmail = checkEmail;
+            this.CheckChat = checkChat;
         }
 
         public void fill()
@@ -87,7 +87,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Driver.FindElement(By.Id("submitFormButton")).Click();
         }
 
-        
+
         public void LocationGeneration(int xpath, int pos, string searchText)
         {
             string[] Xpaths = { "//*[@id=\"newObjectForm\"]/ul/li[3]/span[1]/span", "//*[@id=\"district\"]/span", "//*[@id=\"quartalField\"]/span[1]/span[2]", "//*[@id=\"streetField\"]/span[1]/span[2]" };
@@ -95,8 +95,8 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Driver.FindElement(By.XPath(Xpaths[xpath])).Click();
             IWebElement containerElement = Driver.FindElements(By.ClassName("dropdown-input-values-address"))[pos];
             IList<IWebElement> elements = containerElement.FindElements(By.TagName("li"));
-                      
-            if (elements.Count > 19) 
+
+            if (elements.Count > 19)
             {
                 containerElement.FindElement(By.TagName("input")).SendKeys(searchText);
                 Thread.Sleep(1000);
@@ -114,13 +114,13 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                 }
             }
         }
-       
+
         public void ChooseLocation()
         {
             int pos = 3;
-            LocationGeneration( 0, 0, this.City);
+            LocationGeneration(0, 0, this.City);
             Thread.Sleep(1000);
-            LocationGeneration( 1, 1, this.Settlement);
+            LocationGeneration(1, 1, this.Settlement);
             try
             {
                 LocationGeneration(2, 2, this.Quarter);
@@ -132,14 +132,14 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                 Console.WriteLine("neradom 3-cio");
             }
             LocationGeneration(3, pos, this.Street);
-        }          
+        }
 
-            public void Photo()
-            {
-                IWebElement chooseFile = Driver.FindElement(By.XPath("//*[@id=\"uploadPhotoBtn\"]/input"));
-                chooseFile.SendKeys("C:\\Users\\user\\Desktop\\kauno-r-sav-virbaliskiu-k-metu-g-namu.jpg");
-            }
-        
+        public void Photo()
+        {
+            IWebElement chooseFile = Driver.FindElement(By.XPath("//*[@id=\"uploadPhotoBtn\"]/input"));
+            chooseFile.SendKeys("C:\\Users\\user\\Desktop\\kauno-r-sav-virbaliskiu-k-metu-g-namu.jpg");
+        }
+
         public void emailCheck()
         {
             IWebElement emailCheckbox = Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[36]/div/div/div/label"));
@@ -197,7 +197,6 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                     case "Storage":
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[7]/label")).Click();
                         break;
-                        break;
                     case "Commercial":
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[8]/label")).Click();
                         break;
@@ -211,65 +210,68 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                 }
             }
         }
-     
 
-            public void MarkDetails()
-            {
-                Driver.FindElement(By.XPath("//*[@id=\"showMoreFields\"]/span")).Click();
-               {
-                for (int i = 0; i < Details.Length; i++)
 
-                    switch (Details[i])
-                    {
-                        case "Electricity":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[1]/label")).Click();
-                            break;
-                        case "Gas":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[2]/label")).Click();
-                            break;
-                        case "Sewage":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[3]/label")).Click();
-                            break;
-                        case "Marginal":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[4]/label")).Click();
-                            break;
-                        case "Near forest":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[5]/label")).Click();
-                            break;
-                        case "No buildings":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[6]/label")).Click();
-                            break;
-                        case "Geodesic":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[7]/label")).Click();
-                            break;
-                        case "With coast":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[8]/label")).Click();
-                            break;
-                        case "Paved road":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[9]/label")).Click();
-                            break;
-                        case "Exchange":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[22]/div/div/div/label")).Click();
-                            break;
-                        case "Auction":
-                            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[23]/div/div/div/label")).Click();
-                            break;
-                    }
-               }
-            }
+        public void MarkDetails()
+        {
+            Driver.FindElement(By.XPath("//*[@id=\"showMoreFields\"]/span")).Click();
+            for (int i = 0; i < Details.Length; i++)
+
+                switch (Details[i])
+                {
+                    case "Electricity":
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[1]/label")).Click();
+                        break;
+                    case "Gas":
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[2]/label")).Click();
+                        break;
+                    case "Sewage":
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[3]/label")).Click();
+                        break;
+                    case "Marginal":
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[4]/label")).Click();
+                        break;
+                    case "Near forest":
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[5]/label")).Click();
+                        break;
+                    case "No buildings":
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[6]/label")).Click();
+                        break;
+                    case "Geodesic":
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[7]/label")).Click();
+                        break;
+                    case "With coast":
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[8]/label")).Click();
+                        break;
+                    case "Paved road":
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[9]/label")).Click();
+                        break;
+                    case "Exchange":
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[22]/div/div/div/label")).Click();
+                        break;
+                    case "Auction":
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[23]/div/div/div/label")).Click();
+                        break;
+                }
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
 
     }
-
-   
-
-
-       
-
-
-
-
-
-    
 }
  
 

@@ -1,12 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium.DevTools.V114.FedCm;
 using aruodas.ltOOPInheritance0731vak.Helpers;
 using aruodas.ltOOPInheritance0731vak.Models;
 using OpenQA.Selenium.Support.UI;
@@ -20,45 +14,13 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
         [Test]
         public void fillAddPositiveVilniusTest()
         {
-            VacantLand v = new VacantLand("Vilnius", "Vilniaus", "Markučiai", "Tauro", "1" /*1.Garage.2.Parking place*/, "Multistorey", "5", "50", "Iron", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
-                "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionGarage.LongDescription, new string[] { "Security", "Automatic gates", "Pit", "Basement", "Water", "Heating", "Exchange", "Auction" }
-                , 3,  true, true, true);
+            Garage g = new Garage ("Vilnius", "Vilniaus", "Markučiai", "Tauro", "Garage", 4, "Parking lot", "5", "50", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
+                "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionGarage.LongDescription, new string[] {"Security", "Automatic gates", "Pit", "Basement", "Water", "Heating", "Exchange", "Auction" },
+               new string[] { "Security", "Automatic gates", "Heating", "Lock", "Fenced", "Under the roof", "Storeroom", "Exchange", "Auction"}, 3,  true, true, true);
 
-            v.fill();
+            g.fill();
         }
-
-        //[Test]
-        //public void fillAddPositiveSiauliaiTest()
-        //{
-        //    VacantLand v = new VacantLand("Vilnius", "Vilniaus", "Markučiai", "Tauro", "Garage", "Multistorey", "5", "50", "Iron", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
-        //        "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionGarage.LongDescription, new string[] { "Security", "Automatic gates", "Pit", "Basement", "Water", "Heating", "Exchange", "Auction" }
-        //        , 3, true, true, true);
-
-        //    v.fill();
-        //}
-
-        //[Test]
-        //public void fillAddPositivePanevezysTest()
-        //{
-        //    VacantLand v = new VacantLand("Vilnius", "Vilniaus", "Markučiai", "Tauro", "Garage", "Multistorey", "5", "50", "Iron", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
-        //       "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionGarage.LongDescription, new string[] { "Security", "Automatic gates", "Pit", "Basement", "Water", "Heating", "Exchange", "Auction" }
-        //       , 3, true, true, true);
-
-        //    v.fill();
-        //}
-
-        [Test]
-        public void fillAddPositiveKaisiadoriuTest()
-        {                                               
-            VacantLand v = new VacantLand("Kaišiadorių", "Krečiūnų", "", "", "5", "50", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
-                "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionPlot.LongDescription,
-                new string[] { "Residential", "Manufactoring", "Agricultural", "Collective", "Forestrial", "Factory", "Storage", "Commercial", "Recreational", "Other" },
-                new string[] { "Electricity", "Gas", "Sewage", "Marginal", "Near forest", "No buildings", "Geodesic", "With coast", "Paved road", "Exchange", "Auction" }, true, true, true);
-
-            v.fill();
-        }
-
-
+               
         [OneTimeSetUp]
         public void Initialize()
         {
