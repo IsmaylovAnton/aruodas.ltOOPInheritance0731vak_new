@@ -25,6 +25,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             string Microdistrict = "Lazdynai"; // Mikrorajonas
             string Street = "Raguvos"; // Gatvė
             string Number = "777"; // Objekto numeris
+            bool VisibleNumber = false; //Rodyti objekto numerį (true/false)
             string Area = "50"; // Plotas
             string Price = "500000"; // Kaina
             string PhoNo = "+37065432107"; // Telefono numeris
@@ -39,12 +40,11 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
             bool CheckChat = true; // Sutinku su portalo taisyklėmis
 
-            VacantLand v = new VacantLand(Region, Settlement, Microdistrict, Street, Number, Area, Price, PhoNo, Email, 
-                Youtube, TripleDTour, RC, Description, Purpose, MarkDetails, CheckRules, CheckEmail, CheckChat);
+            VacantLand v = new VacantLand(Region, Settlement, Microdistrict, Street, Number, VisibleNumber, Area, Price, PhoNo, Email,
+               Youtube, TripleDTour, RC, Description, Purpose, MarkDetails, CheckRules, CheckEmail, CheckChat);
 
             v.fill();
         }
-
 
         [Test]
         public void fillAddPositiveSiauliaiTest()
@@ -54,6 +54,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             string Microdistrict = ""; // Mikrorajonas
             string Street = "Nemuno"; // Gatvė
             string Number = "777"; // Objekto numeris
+            bool VisibleNumber = false; //Rodyti objekto numerį (true/false)
             string Area = "50"; // Plotas
             string Price = "500000"; // Kaina
             string PhoNo = "+37065432107"; // Telefono numeris
@@ -68,12 +69,11 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
             bool CheckChat = true; // Sutinku su portalo taisyklėmis
 
-            VacantLand v = new VacantLand(Region, Settlement, Microdistrict, Street, Number, Area, Price, PhoNo, Email,
-                Youtube, TripleDTour, RC, Description, Purpose, MarkDetails, CheckRules, CheckEmail, CheckChat);
+            VacantLand v = new VacantLand(Region, Settlement, Microdistrict, Street, Number, VisibleNumber, Area, Price, PhoNo, Email,
+               Youtube, TripleDTour, RC, Description, Purpose, MarkDetails, CheckRules, CheckEmail, CheckChat);
 
             v.fill();
         }
-
 
         [Test]
             public void fillAddPositivePanevezysTest()
@@ -83,6 +83,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             string Microdistrict = "Pramonės"; // Mikrorajonas
             string Street = "Alkupio"; // Gatvė
             string Number = "777"; // Objekto numeris
+            bool VisibleNumber = false; //Rodyti objekto numerį (true/false)
             string Area = "50"; // Plotas
             string Price = "500000"; // Kaina
             string PhoNo = "+37065432107"; // Telefono numeris
@@ -97,21 +98,21 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
             bool CheckChat = true; // Sutinku su portalo taisyklėmis
 
-            VacantLand v = new VacantLand(Region, Settlement, Microdistrict, Street, Number, Area, Price, PhoNo, Email,
-                Youtube, TripleDTour, RC, Description, Purpose, MarkDetails, CheckRules, CheckEmail, CheckChat);
+            VacantLand v = new VacantLand(Region, Settlement, Microdistrict, Street, Number, VisibleNumber, Area, Price, PhoNo, Email,
+               Youtube, TripleDTour, RC, Description, Purpose, MarkDetails, CheckRules, CheckEmail, CheckChat);
 
             v.fill();
         }
 
-
         [Test]
         public void fillAddPositiveKaisiadoriuTest()
         {
-            string Region = "Kaišiadorių"; // Miestas arba rajonas
-            string Settlement = "Krečiūnų"; // Miestas arba kaimas
-            string Microdistrict = ""; // Mikrorajonas
-            string Street = ""; // Gatvė
+            string Region = "Alytus"; // Miestas arba rajonas
+            string Settlement = "Alytaus"; // Miestas arba kaimas
+            string Microdistrict = "Putinai"; // Mikrorajonas
+            string Street = "Saulės"; // Gatvė
             string Number = "777"; // Objekto numeris
+            bool VisibleNumber = false; //Rodyti objekto numerį (true/false)
             string Area = "50"; // Plotas
             string Price = "500000"; // Kaina
             string PhoNo = "+37065432107"; // Telefono numeris
@@ -126,10 +127,11 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
             bool CheckChat = true; // Sutinku su portalo taisyklėmis
 
-            VacantLand v = new VacantLand(Region, Settlement, Microdistrict, Street, Number, Area, Price, PhoNo, Email,
+            VacantLand v = new VacantLand(Region, Settlement, Microdistrict, Street, Number, VisibleNumber, Area, Price, PhoNo, Email,
                 Youtube, TripleDTour, RC, Description, Purpose, MarkDetails, CheckRules, CheckEmail, CheckChat);
-        }
 
+            v.fill();
+        }
 
             [OneTimeSetUp]
         public void Initialize()

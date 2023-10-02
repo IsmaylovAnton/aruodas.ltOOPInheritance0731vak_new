@@ -4,6 +4,7 @@ using OpenQA.Selenium.Support.Events;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
         public string Quarter { get; set; }
         public string Street { get; set; }
         public string Number { get; set; }
+        public bool VisibleNumber { get; set; }
         public string Description { get; set; }
         public string Price { get; set; }
         public string YoutubeVideo { get; set; }
@@ -32,15 +34,17 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
           this.Wait = DriverClass.Wait;
         }
 
-        public RealEstate(string city, string settlement, string quarter, string street, string number, string description, string youtubeVideo, string tripleDTour, string price, bool checkRules, bool checkEmail, bool checkChat)
+        public RealEstate(string city, string settlement, string quarter, string street, string number, bool visibleNumber, string description, string youtubeVideo, string tripleDTour, string price, bool checkRules, bool checkEmail, bool checkChat)
         {
             this.Driver = DriverClass.Driver;
             this.Wait = DriverClass.Wait;
+
             this.City = city;
             this.Settlement = settlement;
             this.Quarter = quarter;
             this.Street = street;
             this.Number = number;
+            this.VisibleNumber = visibleNumber;
             this.Description = description;
             this.YoutubeVideo = youtubeVideo;
             this.TripleDTour = tripleDTour;
@@ -55,14 +59,28 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             ChooseLocation();
             emailCheck();
             chatCheck();
-            agreeToRUles();
+            agreeToRules();
             Driver.FindElement(By.Name("FHouseNum")).SendKeys(this.Number);
+            ToggleVisibleNumber();
             Driver.FindElement(By.Name("notes_lt")).SendKeys(this.Description);
-            Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
+            ObjectPrice();
             Driver.FindElement(By.Name("Video")).SendKeys(this.YoutubeVideo);
             Driver.FindElement(By.Name("tour_3d")).SendKeys(this.TripleDTour);
-            Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
+            
         }
+
+
+        public void ToggleVisibleNumber()
+        {
+            if (VisibleNumber == true)
+                return;
+            else 
+            { 
+                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[7]/div/div/label")).Click(); 
+            }
+                
+        }
+
 
         public void ChooseLocation()
         {
@@ -110,6 +128,11 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             }
         }
 
+        public void ObjectPrice()
+        {
+             Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
+        }
+
         public void emailCheck()
         {
             if (CheckEmail)
@@ -128,7 +151,7 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             }
         }
 
-        public void agreeToRUles()
+        public void agreeToRules()
         {
             if (CheckRules)
             {

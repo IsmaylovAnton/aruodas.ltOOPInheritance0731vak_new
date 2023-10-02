@@ -29,9 +29,9 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public string PhoNo { get; set; }
         public string Email { get; set; }
 
-        public Garage(string city, string settlement, string quarter, string street, string garageParkPlace, string number, string rc, string area, int garageDetails, int carQuantity, int[] garageProperties, int parkingDetails, int[] parkingProperties, string description, string youtubeVideo, string tripleDTour, string price, 
+        public Garage(string city, string settlement, string quarter, string street, string garageParkPlace, string number, bool visibleNumber, string rc, string area, int garageDetails, int carQuantity, int[] garageProperties, int parkingDetails, int[] parkingProperties, string description, string youtubeVideo, string tripleDTour, string price, 
             string phoNo, string email, bool checkRules, bool checkEmail, bool checkChat) 
-            : base(city, settlement, quarter, street, number, description, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
+            : base(city, settlement, quarter, street, number, visibleNumber, description, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
         {
             this.GarageParkPlace = garageParkPlace;
             this.RC = rc;
@@ -45,12 +45,13 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             this.Email = email;
             
         }
-        public void fill()
+        public override void fill()
         {
             Driver.Navigate().GoToUrl("https://www.aruodas.lt/ideti-skelbima/?obj=13&offer_type=1");
             base.fill(); 
             GarageOrParking();
             Driver.FindElement(By.Name("RCNumber")).SendKeys(this.RC);
+            ToggleVisibleNumber();
             Driver.FindElement(By.Id("fieldFAreaOverAll")).SendKeys(this.Area);
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[38]/span[1]/input")).SendKeys(this.PhoNo);
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/span[1]/input")).Clear();
@@ -59,6 +60,19 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Photo();
             //Driver.FindElement(By.Id("submitFormButton")).Click();
         }
+
+        public void ToggleVisibleNumber()
+        {
+            if (VisibleNumber == true)
+            {
+                return;
+            }
+            else
+            {
+                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[8]/div/div/label/span")).Click();
+            }
+        }
+
         public void Accommodation()
         {
             switch (CarQuantity)
@@ -75,23 +89,17 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                 case 4:
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/div[4]/div[2]")).Click();
                     break;
-
-                default:
-                    {
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/span/div")).SendKeys(CarQuantity + "");
-                        break;
-                    }
             }
         }
 
         public void GarageOrParking()
         {
-            if (GarageParkPlace == "Garage")
+            if (GarageParkPlace == "Garažas")
             {
                 GarageType();
                 GarageFeatures();
             }
-            else if (GarageParkPlace == "Parking place")
+            else if (GarageParkPlace == "Parkingas")
             {
                 Driver.FindElement(By.XPath("//*[@id=\"whole_building_checkbox\"]/div/label")).Click();
                 ParkingType();
