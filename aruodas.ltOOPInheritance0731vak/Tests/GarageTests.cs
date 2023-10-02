@@ -20,15 +20,15 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             string Settlement = "Vilniaus"; // Miestas arba kaimas
             string Microdistrict = "Lazdynai"; // Mikrorajonas
             string Street = "Raguvos"; // Gatvė
-            string GarageOrParking = "Garage"; // Garažas ar parkingas
+            string GarageOrParking = "Garage"; // 1. Garažas; 2. Parkingas
             string Number = "777"; // Objekto numeris
             string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
             string Area = "50"; // Plotas
             int GarageType = 2; // Garažo tipas: 1. Mūrinis; 2. Geležinis; 3. Požeminis; 4. Daugiaukštis; 5. Kita
             int Accommodation = 3; //Telpa automobilių
-            string[] GarageFeatures = new string[] { "Security", "Automatic gates", "Pit", "Basement", "Water", "Heating", "Exchange", "Auction" }; // Garažo ypatybės: 1. Apsauga; 2. Automatiniai vartai; 3. Duobė; 4. Rūsys; 5. Vanduo; 6. Šildymas; 7. Domina keitimas; 7. Varžytinės/aukcionas 
+            int[] GarageFeatures = new int[] { 1,2,3,4,5,6,7,8 }; // Garažo ypatybės: 1. Apsauga; 2. Automatiniai vartai; 3. Duobė; 4. Rūsys; 5. Vanduo; 6. Šildymas; 7. Domina keitimas; 8. Varžytinės/aukcionas 
             int ParkingType = 1; // Parkingo tipas: 1. Požeminėje aikštelėje; 2.Antžeminėje aikštelėje; 3. Daugiaaukštėje aikštelėje; 4. Kita
-            string[] ParkingFeatures = new string[] { "Security", "Automatic gates", "Heating", "Lock", "Fenced", "Under the roof", "Storeroom", "Exchange", "Auction" }; // 1. Apsauga; 2. Automatiniai vartai; 3. Šildymas; 4. Užraktas; 5. Aptverta; 6. Po stogu; 7. Su ssandėliuku 
+            int[] ParkingFeatures = new int[] {1,2,3,4,5,6,7,8,9}; // 1. Apsauga; 2. Automatiniai vartai; 3. Šildymas; 4. Užraktas; 5. Aptverta; 6. Po stogu; 7. Su sandėliuku 
             string Description = DescriptionGarage.LongDescription; // Aprašymas
             string Youtube = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // Youtube nuoroda
             string TripleDTour = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // 3D nuoroda
@@ -51,15 +51,15 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             string Settlement = "Vilniaus"; // Miestas arba kaimas
             string Microdistrict = "Lazdynai"; // Mikrorajonas
             string Street = "Raguvos"; // Gatvė
-            string GarageOrParking = "Parking place"; // 1. Garage; 2. Parking place (Garažas ar parkingas)
+            string GarageOrParking = "Parking place"; // 1. Garažas; 2. Parkingas
             string Number = "777"; // Objekto numeris
             string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
             string Area = "50"; // Plotas
             int GarageType = 2; // Garažo tipas: 1. Mūrinis; 2. Geležinis; 3. Požeminis; 4. Daugiaukštis; 5. Kita
             int Accommodation = 3; //Telpa automobilių
-            string[] GarageFeatures = new string[] { "Security", "Automatic gates", "Pit", "Basement", "Water", "Heating", "Exchange", "Auction" }; // Garažo ypatybės: 1. Apsauga; 2. Automatiniai vartai; 3. Duobė; 4. Rūsys; 5. Vanduo; 6. Šildymas; 7. Domina keitimas; 7. Varžytinės/aukcionas 
+            int[] GarageFeatures = new int[] { 1,2,3,4,5,6,7,8 }; // Garažo ypatybės: 1. Apsauga; 2. Automatiniai vartai; 3. Duobė; 4. Rūsys; 5. Vanduo; 6. Šildymas; 7. Domina keitimas; 8. Varžytinės/aukcionas 
             int ParkingType = 1; // Parkingo tipas: 1. Požeminėje aikštelėje; 2.Antžeminėje aikštelėje; 3. Daugiaaukštėje aikštelėje; 4. Kita
-            string[] ParkingFeatures = new string[] { "Security", "Automatic gates", "Heating", "Lock", "Fenced", "Under the roof", "Storeroom", "Exchange", "Auction" }; // 1. Apsauga; 2. Automatiniai vartai; 3. Šildymas; 4. Užraktas; 5. Aptverta; 6. Po stogu; 7. Su ssandėliuku 
+            int[] ParkingFeatures = new int[] {1,2,3,4,5,6,7,8,9}; // 1. Apsauga; 2. Automatiniai vartai; 3. Šildymas; 4. Užraktas; 5. Aptverta; 6. Po stogu; 7. Su sandėliuku 
             string Description = DescriptionGarage.LongDescription; // Aprašymas
             string Youtube = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // Youtube nuoroda
             string TripleDTour = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // 3D nuoroda
@@ -84,7 +84,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             }
 
             DriverClass.Driver = new ChromeDriver();
-            DriverClass.Wait = new WebDriverWait(DriverClass.Driver, TimeSpan.FromSeconds(5));
+            //DriverClass.Wait = new WebDriverWait(DriverClass.Driver, TimeSpan.FromSeconds(5));
 
             driver = DriverClass.Driver;
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);

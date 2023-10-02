@@ -28,9 +28,9 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public string Area { get; set; }
         public int GarageDetails { get; set; }
         public int CarQuantity { get; set; }
-        public string[] GarageProperties { get; set; }
+        public int[] GarageProperties { get; set; }
         public int ParkingDetails { get; set; }
-        public string[] ParkingProperties { get; set; }
+        public int[] ParkingProperties { get; set; }
         public string Description { get; set; }
         public string YoutubeVideo { get; set; }
         public string TripleDTour { get; set; }
@@ -42,7 +42,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public bool CheckChat { get; set; }
 
 
-        public Garage(string city, string settlement, string quarter, string street, string garageParkPlace, string number, string rc, string area, int garageDetails, int carQuantity, string[] garageProperties, int parkingDetails, string[] parkingProperties, string description, string youtubeVideo, string tripleDTour, string price, 
+        public Garage(string city, string settlement, string quarter, string street, string garageParkPlace, string number, string rc, string area, int garageDetails, int carQuantity, int[] garageProperties, int parkingDetails, int[] parkingProperties, string description, string youtubeVideo, string tripleDTour, string price, 
             string phoNo, string email, bool checkRules, bool checkEmail, bool checkChat) : base()
         {
             this.City = city;
@@ -207,28 +207,28 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             {
                 switch (GarageProperties[i])
                 {
-                    case "Security":
+                    case 1:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[22]/div/div[1]/label")).Click();
                         break;
-                    case "Automatic gates":
+                    case 2:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[22]/div/div[2]/label")).Click();
                         break;
-                    case "Pit":
+                    case 3:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[22]/div/div[3]/label")).Click();
                         break;
-                    case "Basement":
+                    case 4:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[22]/div/div[4]/label")).Click();
                         break;
-                    case "Water":
+                    case 5:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[22]/div/div[5]/label")).Click();
                         break;
-                    case "Heating":
+                    case 6:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[22]/div/div[6]/label")).Click();
                         break;
-                    case "Exchange":
+                    case 7:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[26]/div/div/div/label")).Click();
                         break;
-                    case "Auction":
+                    case 8:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[27]/div/div/div/label")).Click();
                         break;
 
@@ -263,31 +263,31 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             {
                 switch (ParkingProperties[i])
                 {
-                    case "Security":
+                    case 1:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[24]/div/div[1]/label")).Click();
                         break;
-                    case "Automatic gates":
+                    case 2:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[24]/div/div[2]/label")).Click();
                         break;
-                    case "Heating":
+                    case 3:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[24]/div/div[3]/label")).Click();
                         break;
-                    case "Lock":
+                    case 4:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[24]/div/div[4]/label")).Click();
                         break;
-                    case "Fenced":
+                    case 5:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[24]/div/div[5]/label")).Click();
                         break;
-                    case "Under the roof":
+                    case 6:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[24]/div/div[6]/label")).Click();
                         break;
-                    case "Storeroom":
+                    case 7:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[24]/div/div[7]/label")).Click();
                         break;
-                    case "Exchange":
+                    case 8:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[26]/div/div/div/label")).Click();
                         break;
-                    case "Auction":
+                    case 9:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[27]/div/div/div/label")).Click();
                         break;
 
