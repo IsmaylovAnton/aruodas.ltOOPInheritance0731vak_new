@@ -22,48 +22,36 @@ namespace aruodas.ltOOPInheritance0731vak.Models
     internal class VacantLand : RealEstate
     {
         public string Area { get; set; }
-        public string Price { get; set; }
         public string PhoNo { get; set; }
         public string Email { get; set; }
-        public string Video { get; set; }
-        public string Tour { get; set; }
         public string RC { get; set; }
-        public string[] CheckBoxes { get; set; }
-        public string[] Details { get; set; }
+        public int[] CheckBoxes { get; set; }
+        public int[] Details { get; set; }
 
 
-        public VacantLand(string city, string settlement, string quarter, string street, string number, string area, string price, string phoNo, string email, string video, string tour, string rc, string description,
-        string[] checkBoxes, string[] details, bool checkRules, bool checkEmail, bool checkChat)
-            : base(city, settlement, quarter, street, number, description, checkRules, checkEmail, checkChat)
+        public VacantLand(string city, string settlement, string quarter, string street, string number, string area, string price, string phoNo, string email, string youtubeVideo, string tripleDTour, string rc, string description,
+        int[] checkBoxes, int[] details, bool checkRules, bool checkEmail, bool checkChat)
+            : base(city, settlement, quarter, street, number, description, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
         {
             this.Area = area;
-            this.Price = price;
             this.PhoNo = phoNo;
             this.Email = email;
-            this.Video = video;
-            this.Tour = tour;
             this.RC = rc;
             this.CheckBoxes = checkBoxes;
             this.Details = details;
         }
 
-        public void fill()
+            public void fill()
         {
-            Driver.Navigate().GoToUrl("https://en.aruodas.lt/ideti-skelbima/?obj=11&offer_type=1");
-            base.ChooseLocation();
+            Driver.Navigate().GoToUrl("https://www.aruodas.lt/ideti-skelbima/?obj=11&offer_type=1");
+            base.fill();
             Purpose();
             MarkDetails();
             Driver.FindElement(By.Name("RCNumber")).SendKeys(this.RC);
             Driver.FindElement(By.Id("fieldFAreaOverAll")).SendKeys(this.Area);
-            Driver.FindElement(By.Name("Video")).SendKeys(this.Video);
-            Driver.FindElement(By.Name("tour_3d")).SendKeys(this.Tour);
-            Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[34]/span[1]/input")).SendKeys(this.PhoNo);
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[35]/span[1]/input")).Clear();
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[35]/span[1]/input")).SendKeys(this.Email);
-            emailCheck();
-            chatCheck();
-            agreeToRUles();
             Photo();
             //Driver.FindElement(By.Id("submitFormButton")).Click();
         }
@@ -80,34 +68,34 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             {
                 switch (CheckBoxes[i])
                 {
-                    case "Residential":
+                    case 1:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[1]/label")).Click();
                         break;
-                    case "Manufactoring":
+                    case 2:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[2]/label")).Click();
                         break;
-                    case "Agricultural":
+                    case 3:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[3]/label")).Click();
                         break;
-                    case "Collective":
+                    case 4:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[4]/label")).Click();
                         break;
-                    case "Forestrial":
+                    case 5:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[5]/label")).Click();
                         break;
-                    case "Factory":
+                    case 6:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[6]/label")).Click();
                         break;
-                    case "Storage":
+                    case 7:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[7]/label")).Click();
                         break;
-                    case "Commercial":
+                    case 8:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[8]/label")).Click();
                         break;
-                    case "Recreational":
+                    case 9:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[9]/label")).Click();
                         break;
-                    case "Other":
+                    case 10:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[10]/label")).Click();
                         break;
 
@@ -122,37 +110,37 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             
                 switch (Details[i])
                 {
-                    case "Electricity":
+                    case 1:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[1]/label")).Click();
                         break;
-                    case "Gas":
+                    case 2:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[2]/label")).Click();
                         break;
-                    case "Sewage":
+                    case 3:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[3]/label")).Click();
                         break;
-                    case "Marginal":
+                    case 4:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[4]/label")).Click();
                         break;
-                    case "Near forest":
+                    case 5:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[5]/label")).Click();
                         break;
-                    case "No buildings":
+                    case 6:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[6]/label")).Click();
                         break;
-                    case "Geodesic":
+                    case 7:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[7]/label")).Click();
                         break;
-                    case "With coast":
+                    case 8:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[8]/label")).Click();
                         break;
-                    case "Paved road":
+                    case 9:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[20]/div/div[9]/label")).Click();
                         break;
-                    case "Exchange":
+                    case 10:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[22]/div/div/div/label")).Click();
                         break;
-                    case "Auction":
+                    case 11:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[23]/div/div/div/label")).Click();
                         break;
                 }

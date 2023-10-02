@@ -20,7 +20,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             string Settlement = "Vilniaus"; // Miestas arba kaimas
             string Microdistrict = "Lazdynai"; // Mikrorajonas
             string Street = "Raguvos"; // Gatvė
-            string GarageOrParking = "Garage"; // 1. Garažas; 2. Parkingas
+            string GarageOrParking = "Garažas"; // 1. Garažas; 2. Parkingas
             string Number = "777"; // Objekto numeris
             string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
             string Area = "50"; // Plotas

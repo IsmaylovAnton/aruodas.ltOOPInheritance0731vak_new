@@ -20,6 +20,9 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
         public string Street { get; set; }
         public string Number { get; set; }
         public string Description { get; set; }
+        public string Price { get; set; }
+        public string YoutubeVideo { get; set; }
+        public string TripleDTour { get; set; }
         public bool CheckRules { get; set; }
         public bool CheckEmail { get; set; }
         public bool CheckChat { get; set; }
@@ -29,7 +32,7 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
           this.Wait = DriverClass.Wait;
         }
 
-        public RealEstate(string city, string settlement, string quarter, string street, string number, string description, bool checkRules, bool checkEmail, bool checkChat)
+        public RealEstate(string city, string settlement, string quarter, string street, string number, string description, string youtubeVideo, string tripleDTour, string price, bool checkRules, bool checkEmail, bool checkChat)
         {
             this.Driver = DriverClass.Driver;
             this.Wait = DriverClass.Wait;
@@ -39,6 +42,9 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             this.Street = street;
             this.Number = number;
             this.Description = description;
+            this.YoutubeVideo = youtubeVideo;
+            this.TripleDTour = tripleDTour;
+            this.Price = price;
             this.CheckRules = true;
             this.CheckEmail = true;
             this.CheckChat = true;
@@ -51,9 +57,12 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             chatCheck();
             agreeToRUles();
             Driver.FindElement(By.Name("FHouseNum")).SendKeys(this.Number);
-            Driver.FindElement(By.Name("notes_en")).SendKeys(this.Description);
+            Driver.FindElement(By.Name("notes_lt")).SendKeys(this.Description);
+            Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
+            Driver.FindElement(By.Name("Video")).SendKeys(this.YoutubeVideo);
+            Driver.FindElement(By.Name("tour_3d")).SendKeys(this.TripleDTour);
+            Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
         }
-
 
         public void ChooseLocation()
         {
@@ -110,7 +119,6 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             }
         }
      
-
         public void chatCheck()
         {
             if (CheckChat)

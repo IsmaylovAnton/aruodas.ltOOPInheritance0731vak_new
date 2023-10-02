@@ -26,15 +26,12 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public int[] GarageProperties { get; set; }
         public int ParkingDetails { get; set; }
         public int[] ParkingProperties { get; set; }
-        public string YoutubeVideo { get; set; }
-        public string TripleDTour { get; set; }
-        public string Price { get; set; }
         public string PhoNo { get; set; }
         public string Email { get; set; }
 
         public Garage(string city, string settlement, string quarter, string street, string garageParkPlace, string number, string rc, string area, int garageDetails, int carQuantity, int[] garageProperties, int parkingDetails, int[] parkingProperties, string description, string youtubeVideo, string tripleDTour, string price, 
             string phoNo, string email, bool checkRules, bool checkEmail, bool checkChat) 
-            : base(city, settlement, quarter, street, number, description, checkRules, checkEmail, checkChat)
+            : base(city, settlement, quarter, street, number, description, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
         {
             this.GarageParkPlace = garageParkPlace;
             this.RC = rc;
@@ -44,25 +41,17 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             this.GarageProperties = garageProperties;
             this.ParkingDetails = parkingDetails;
             this.ParkingProperties = parkingProperties;
-            this.Description = description;
-            this.YoutubeVideo = youtubeVideo;
-            this.TripleDTour = tripleDTour;
-            this.Price = price;
             this.PhoNo = phoNo;
             this.Email = email;
             
         }
         public void fill()
         {
-            Driver.Navigate().GoToUrl("https://en.aruodas.lt/ideti-skelbima/?obj=13&offer_type=1");
+            Driver.Navigate().GoToUrl("https://www.aruodas.lt/ideti-skelbima/?obj=13&offer_type=1");
             base.fill(); 
             GarageOrParking();
-            Driver.FindElement(By.Name("FHouseNum")).SendKeys(this.Number);
             Driver.FindElement(By.Name("RCNumber")).SendKeys(this.RC);
             Driver.FindElement(By.Id("fieldFAreaOverAll")).SendKeys(this.Area);
-            Driver.FindElement(By.Name("Video")).SendKeys(this.YoutubeVideo);
-            Driver.FindElement(By.Name("tour_3d")).SendKeys(this.TripleDTour);
-            Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[38]/span[1]/input")).SendKeys(this.PhoNo);
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/span[1]/input")).Clear();
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/span[1]/input")).SendKeys(this.Email);

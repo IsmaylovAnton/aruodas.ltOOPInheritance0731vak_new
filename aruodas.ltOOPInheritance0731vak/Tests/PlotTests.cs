@@ -20,49 +20,118 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
         [Test]
         public void fillAddPositiveVilniusTest()
         {
-            VacantLand v = new VacantLand("Vilnius", "Vilniaus", "Markučiai", "Tauro", "5", "50", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
-                "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionPlot.LongDescription,
-                new string[] { "Residential", "Manufactoring", "Agricultural", "Collective", "Forestrial", "Factory", "Storage", "Commercial", "Recreational", "Other" },
-                new string[] { "Electricity", "Gas", "Sewage", "Marginal", "Near forest", "No buildings", "Geodesic", "With coast", "Paved road", "Exchange", "Auction" }, true, true, true);
+            string Region = "Vilnius"; // Miestas arba rajonas
+            string Settlement = "Vilniaus"; // Miestas arba kaimas
+            string Microdistrict = "Lazdynai"; // Mikrorajonas
+            string Street = "Raguvos"; // Gatvė
+            string Number = "777"; // Objekto numeris
+            string Area = "50"; // Plotas
+            string Price = "500000"; // Kaina
+            string PhoNo = "+37065432107"; // Telefono numeris
+            string Email = "nesakysiu@niekam.ut"; // Elektros 
+            string Youtube = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // Youtube nuoroda
+            string TripleDTour = "https://www.youtube.com/watch?v=31gM5gjw8A8"; //3D nuoroda
+            string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
+            string Description = DescriptionGarage.LongDescription; // Aprašymas
+            int[] Purpose = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; // Paskirtis: 1. Namų valda; 2. Daugiabučių statyba; 3. Žemės ūkio; 4. Sklypas soduose; 5. Miškų ūkio; 6. Pramonės; 7. Sandėliavimo; 8. Komercinė; 9. Rekreacinė; 10. Kita
+            int[] MarkDetails = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 }; // Ypatybės: 1. Elektra; 2. Dujos; 3. Vanduo; 4. Kraštinis sklypas; 5. Greta miško; 6. Be pastatų; 7. Geodeziniai matavimai; 8. Su pakrante; 9. Asfaltuotas privažiavimas
+            bool CheckRules = true; // Išjungti kontaktavimo el. paštu funkciją skelbime
+            bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
+            bool CheckChat = true; // Sutinku su portalo taisyklėmis
+
+            VacantLand v = new VacantLand(Region, Settlement, Microdistrict, Street, Number, Area, Price, PhoNo, Email, 
+                Youtube, TripleDTour, RC, Description, Purpose, MarkDetails, CheckRules, CheckEmail, CheckChat);
 
             v.fill();
         }
+
 
         [Test]
         public void fillAddPositiveSiauliaiTest()
         {
-            VacantLand v = new VacantLand("Šiauliai", "Žaliūkių", "", "Nemuno", "5", "50", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
-                "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionPlot.LongDescription,
-                new string[] { "Residential", "Manufactoring", "Agricultural", "Collective", "Forestrial", "Factory", "Storage", "Commercial", "Recreational", "Other" },
-                new string[] { "Electricity", "Gas", "Sewage", "Marginal", "Near forest", "No buildings", "Geodesic", "With coast", "Paved road", "Exchange", "Auction" }, true, true, true);
+            string Region = "Šiauliai"; // Miestas arba rajonas
+            string Settlement = "Žaliūkių"; // Miestas arba kaimas
+            string Microdistrict = ""; // Mikrorajonas
+            string Street = "Nemuno"; // Gatvė
+            string Number = "777"; // Objekto numeris
+            string Area = "50"; // Plotas
+            string Price = "500000"; // Kaina
+            string PhoNo = "+37065432107"; // Telefono numeris
+            string Email = "nesakysiu@niekam.ut"; // Elektros 
+            string Youtube = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // Youtube nuoroda
+            string TripleDTour = "https://www.youtube.com/watch?v=31gM5gjw8A8"; //3D nuoroda
+            string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
+            string Description = DescriptionGarage.LongDescription; // Aprašymas
+            int[] Purpose = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; // Paskirtis: 1. Namų valda; 2. Daugiabučių statyba; 3. Žemės ūkio; 4. Sklypas soduose; 5. Miškų ūkio; 6. Pramonės; 7. Sandėliavimo; 8. Komercinė; 9. Rekreacinė; 10. Kita
+            int[] MarkDetails = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 }; // Ypatybės: 1. Elektra; 2. Dujos; 3. Vanduo; 4. Kraštinis sklypas; 5. Greta miško; 6. Be pastatų; 7. Geodeziniai matavimai; 8. Su pakrante; 9. Asfaltuotas privažiavimas
+            bool CheckRules = true;  // Išjungti kontaktavimo el. paštu funkciją skelbime
+            bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
+            bool CheckChat = true; // Sutinku su portalo taisyklėmis
+
+            VacantLand v = new VacantLand(Region, Settlement, Microdistrict, Street, Number, Area, Price, PhoNo, Email,
+                Youtube, TripleDTour, RC, Description, Purpose, MarkDetails, CheckRules, CheckEmail, CheckChat);
 
             v.fill();
         }
+
 
         [Test]
-        public void fillAddPositivePanevezysTest()
+            public void fillAddPositivePanevezysTest()
         {
-            VacantLand v = new VacantLand("Panevežys", "Panevėžio", "Pramonės", "Alkupio", "5", "50", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
-                "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionPlot.LongDescription,
-                new string[] { "Residential", "Manufactoring", "Agricultural", "Collective", "Forestrial", "Factory", "Storage", "Commercial", "Recreational", "Other" },
-                new string[] { "Electricity", "Gas", "Sewage", "Marginal", "Near forest", "No buildings", "Geodesic", "With coast", "Paved road", "Exchange", "Auction" }, true, true, true);
+            string Region = "Panevežys"; // Miestas arba rajonas
+            string Settlement = "Panevėžio"; // Miestas arba kaimas
+            string Microdistrict = "Pramonės"; // Mikrorajonas
+            string Street = "Alkupio"; // Gatvė
+            string Number = "777"; // Objekto numeris
+            string Area = "50"; // Plotas
+            string Price = "500000"; // Kaina
+            string PhoNo = "+37065432107"; // Telefono numeris
+            string Email = "nesakysiu@niekam.ut"; // Elektros 
+            string Youtube = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // Youtube nuoroda
+            string TripleDTour = "https://www.youtube.com/watch?v=31gM5gjw8A8"; //3D nuoroda
+            string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
+            string Description = DescriptionGarage.LongDescription; // Aprašymas
+            int[] Purpose = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; // Paskirtis: 1. Namų valda; 2. Daugiabučių statyba; 3. Žemės ūkio; 4. Sklypas soduose; 5. Miškų ūkio; 6. Pramonės; 7. Sandėliavimo; 8. Komercinė; 9. Rekreacinė; 10. Kita
+            int[] MarkDetails = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 }; // Ypatybės: 1. Elektra; 2. Dujos; 3. Vanduo; 4. Kraštinis sklypas; 5. Greta miško; 6. Be pastatų; 7. Geodeziniai matavimai; 8. Su pakrante; 9. Asfaltuotas privažiavimas
+            bool CheckRules = true;  // Išjungti kontaktavimo el. paštu funkciją skelbime
+            bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
+            bool CheckChat = true; // Sutinku su portalo taisyklėmis
+
+            VacantLand v = new VacantLand(Region, Settlement, Microdistrict, Street, Number, Area, Price, PhoNo, Email,
+                Youtube, TripleDTour, RC, Description, Purpose, MarkDetails, CheckRules, CheckEmail, CheckChat);
 
             v.fill();
         }
+
 
         [Test]
         public void fillAddPositiveKaisiadoriuTest()
         {
-            VacantLand v = new VacantLand("Kaišiadorių", "Krečiūnų", "", "", "5", "50", "5000000", "+37065432107", "nesakysiu@niekam.ut", "https://www.youtube.com/watch?v=31gM5gjw8A8",
-                "https://www.youtube.com/watch?v=31gM5gjw8A8", "1234 - 5678 - 9011:4660", DescriptionPlot.LongDescription,
-                new string[] { "Residential", "Manufactoring", "Agricultural", "Collective", "Forestrial", "Factory", "Storage", "Commercial", "Recreational", "Other" },
-                new string[] { "Electricity", "Gas", "Sewage", "Marginal", "Near forest", "No buildings", "Geodesic", "With coast", "Paved road", "Exchange", "Auction" }, true, true, true);
+            string Region = "Kaišiadorių"; // Miestas arba rajonas
+            string Settlement = "Krečiūnų"; // Miestas arba kaimas
+            string Microdistrict = ""; // Mikrorajonas
+            string Street = ""; // Gatvė
+            string Number = "777"; // Objekto numeris
+            string Area = "50"; // Plotas
+            string Price = "500000"; // Kaina
+            string PhoNo = "+37065432107"; // Telefono numeris
+            string Email = "nesakysiu@niekam.ut"; // Elektros 
+            string Youtube = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // Youtube nuoroda
+            string TripleDTour = "https://www.youtube.com/watch?v=31gM5gjw8A8"; //3D nuoroda
+            string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
+            string Description = DescriptionGarage.LongDescription; // Aprašymas
+            int[] Purpose = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; // Paskirtis: 1. Namų valda; 2. Daugiabučių statyba; 3. Žemės ūkio; 4. Sklypas soduose; 5. Miškų ūkio; 6. Pramonės; 7. Sandėliavimo; 8. Komercinė; 9. Rekreacinė; 10. Kita
+            int[] MarkDetails = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 }; // Ypatybės: 1. Elektra; 2. Dujos; 3. Vanduo; 4. Kraštinis sklypas; 5. Greta miško; 6. Be pastatų; 7. Geodeziniai matavimai; 8. Su pakrante; 9. Asfaltuotas privažiavimas
+            bool CheckRules = true;  // Išjungti kontaktavimo el. paštu funkciją skelbime
+            bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
+            bool CheckChat = true; // Sutinku su portalo taisyklėmis
 
-            v.fill();
+            VacantLand v = new VacantLand(Region, Settlement, Microdistrict, Street, Number, Area, Price, PhoNo, Email,
+                Youtube, TripleDTour, RC, Description, Purpose, MarkDetails, CheckRules, CheckEmail, CheckChat);
         }
 
 
-        [OneTimeSetUp]
+            [OneTimeSetUp]
         public void Initialize()
         {
             if (DriverClass.Driver is not null)
