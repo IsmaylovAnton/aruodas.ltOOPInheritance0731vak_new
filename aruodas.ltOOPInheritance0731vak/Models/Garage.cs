@@ -88,7 +88,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             chatCheck();
             agreeToRUles();
             Photo();
-            //Driver.FindElement(By.Id("submitFormButton")).Click();
+            Driver.FindElement(By.Id("submitFormButton")).Click();
         }
         public void Accommodation()
         {
