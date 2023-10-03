@@ -21,6 +21,7 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
         public string Street { get; set; }
         public string Number { get; set; }
         public bool VisibleNumber { get; set; }
+        public bool VisibleRC { get; set; }
         public string Description { get; set; }
         public string Price { get; set; }
         public string YoutubeVideo { get; set; }
@@ -34,7 +35,7 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
           this.Wait = DriverClass.Wait;
         }
 
-        public RealEstate(string city, string settlement, string quarter, string street, string number, bool visibleNumber, string description, string youtubeVideo, string tripleDTour, string price, bool checkRules, bool checkEmail, bool checkChat)
+        public RealEstate(string city, string settlement, string quarter, string street, string number, bool visibleNumber, bool visibleRC, string description, string youtubeVideo, string tripleDTour, string price, bool checkRules, bool checkEmail, bool checkChat)
         {
             this.Driver = DriverClass.Driver;
             this.Wait = DriverClass.Wait;
@@ -45,6 +46,7 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             this.Street = street;
             this.Number = number;
             this.VisibleNumber = visibleNumber;
+            this.VisibleRC = visibleRC;
             this.Description = description;
             this.YoutubeVideo = youtubeVideo;
             this.TripleDTour = tripleDTour;
@@ -62,6 +64,7 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             agreeToRules();
             Driver.FindElement(By.Name("FHouseNum")).SendKeys(this.Number);
             ToggleVisibleNumber();
+            ToggleVisibleRC();
             Driver.FindElement(By.Name("notes_lt")).SendKeys(this.Description);
             ObjectPrice();
             Driver.FindElement(By.Name("Video")).SendKeys(this.YoutubeVideo);
@@ -80,8 +83,16 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             }
                 
         }
+        public void ToggleVisibleRC()
+        {
+            if (VisibleRC == true)
+                return;
+            else
+            {
+                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[11]/div[2]/div/label/span")).Click();
+            }
 
-
+        }
         public void ChooseLocation()
         {
             int pos = 3;
@@ -96,9 +107,19 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             catch
             {
                 pos = 2;
-                Console.WriteLine("neradom 3-cio");
+                Console.WriteLine("kvartalo");
             }
-            LocationGeneration(3, pos, this.Street);
+           
+            try
+            {
+                LocationGeneration(3, pos, this.Street);
+                Thread.Sleep(1000);
+            }
+            catch
+            {
+                pos = 3;
+                Console.WriteLine("gatves");
+            }
         }
 
         public void LocationGeneration(int xpath, int pos, string searchText)
@@ -130,7 +151,7 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
 
         public void ObjectPrice()
         {
-             Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
+            Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
         }
 
         public void emailCheck()

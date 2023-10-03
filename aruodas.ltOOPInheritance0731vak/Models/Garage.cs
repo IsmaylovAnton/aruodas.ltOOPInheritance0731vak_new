@@ -29,9 +29,9 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public string PhoNo { get; set; }
         public string Email { get; set; }
 
-        public Garage(string city, string settlement, string quarter, string street, string garageParkPlace, string number, bool visibleNumber, string rc, string area, int garageDetails, int carQuantity, int[] garageProperties, int parkingDetails, int[] parkingProperties, string description, string youtubeVideo, string tripleDTour, string price, 
+        public Garage(string city, string settlement, string quarter, string street, string garageParkPlace, string number, bool visibleNumber, bool visibleRC, string rc, string area, int garageDetails, int carQuantity, int[] garageProperties, int parkingDetails, int[] parkingProperties, string description, string youtubeVideo, string tripleDTour, string price, 
             string phoNo, string email, bool checkRules, bool checkEmail, bool checkChat) 
-            : base(city, settlement, quarter, street, number, visibleNumber, description, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
+            : base(city, settlement, quarter, street, number, visibleNumber, visibleRC, description, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
         {
             this.GarageParkPlace = garageParkPlace;
             this.RC = rc;
@@ -50,7 +50,6 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Driver.Navigate().GoToUrl("https://www.aruodas.lt/ideti-skelbima/?obj=13&offer_type=1");
             base.fill(); 
             GarageOrParking();
-            Driver.FindElement(By.Name("RCNumber")).SendKeys(this.RC);
             ToggleVisibleNumber();
             Driver.FindElement(By.Id("fieldFAreaOverAll")).SendKeys(this.Area);
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[38]/span[1]/input")).SendKeys(this.PhoNo);

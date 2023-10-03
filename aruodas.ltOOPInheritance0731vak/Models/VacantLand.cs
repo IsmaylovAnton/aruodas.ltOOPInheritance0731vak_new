@@ -29,9 +29,9 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public int[] Details { get; set; }
 
 
-        public VacantLand(string city, string settlement, string quarter, string street, string number, bool VisibleNumber, string area, string price, string phoNo, string email, string youtubeVideo, string tripleDTour, string rc, string description,
+        public VacantLand(string city, string settlement, string quarter, string street, string number, bool VisibleNumber, bool visibleRC, string area, string price, string phoNo, string email, string youtubeVideo, string tripleDTour, string rc, string description,
         int[] checkBoxes, int[] details, bool checkRules, bool checkEmail, bool checkChat)
-            : base(city, settlement, quarter, street, number, VisibleNumber, description, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
+            : base(city, settlement, quarter, street, number, VisibleNumber, visibleRC, description, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
         {
             this.Area = area;
             this.PhoNo = phoNo;
@@ -41,12 +41,13 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             this.Details = details;
         }
 
-            public void fill()
+        public override void fill()
         {
             Driver.Navigate().GoToUrl("https://www.aruodas.lt/ideti-skelbima/?obj=11&offer_type=1");
             base.fill();
             MarkDetails();
             Purpose();
+            ToggleVisibleRC();
             Driver.FindElement(By.Name("RCNumber")).SendKeys(this.RC);
             Driver.FindElement(By.Id("fieldFAreaOverAll")).SendKeys(this.Area);
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[34]/span[1]/input")).SendKeys(this.PhoNo);
@@ -55,8 +56,20 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Photo();
             //Driver.FindElement(By.Id("submitFormButton")).Click();
         }
+                
+        public void ToggleVisibleRC()
+        {
+            if (VisibleRC == true)
+            {
+                return;
+            }
+            else
+            {
+                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[11]/div[2]/div/label")).Click();
+            }
+        }
 
-            public void Photo()
+        public void Photo()
             {
                 IWebElement chooseFile = Driver.FindElement(By.XPath("//*[@id=\"uploadPhotoBtn\"]/input"));
                 chooseFile.SendKeys("C:\\Users\\user\\Desktop\\kauno-r-sav-virbaliskiu-k-metu-g-namu.jpg");

@@ -13,7 +13,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace aruodas.ltOOPInheritance0731vak.Tests
 {
-    internal class PlotTests
+    internal class FlatTests
     {
         public static IWebDriver driver;
 
@@ -108,7 +108,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
         }
 
         [Test]
-        public void fillAddPositiveAlytusTest()
+        public void fillAddPositiveKaisiadoriuTest()
         {
             string Region = "Kaišiadorių"; // Miestas arba rajonas
             string Settlement = "Pridotkų"; // Miestas arba kaimas

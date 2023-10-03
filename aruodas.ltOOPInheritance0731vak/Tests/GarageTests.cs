@@ -20,6 +20,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             string GarageOrParking = "Garažas"; // 1. Garažas; 2. Parkingas
             string Number = "777"; // Objekto numeris
             bool VisibleNumber = false; //Rodyti objekto numerį (true/false)
+            bool VisibleRC = false; // Rodyti unikalų numerį
             string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
             string Area = "50"; // Plotas
             int GarageType = 2; // Garažo tipas: 1. Mūrinis; 2. Geležinis; 3. Požeminis; 4. Daugiaukštis; 5. Kita
@@ -37,13 +38,13 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
             bool CheckChat = true; // Sutinku su portalo taisyklėmis
 
-            Garage g = new Garage (Region, Settlement, Microdistrict, Street, GarageOrParking, Number, VisibleNumber, RC, Area, GarageType, Accommodation, GarageFeatures, ParkingType, ParkingFeatures, Description, Youtube, TripleDTour, Price,  PhoNo, Email, CheckRules, CheckEmail, CheckChat);
+            Garage g = new Garage (Region, Settlement, Microdistrict, Street, GarageOrParking, Number, VisibleNumber, VisibleRC, RC, Area, GarageType, Accommodation, GarageFeatures, ParkingType, ParkingFeatures, Description, Youtube, TripleDTour, Price,  PhoNo, Email, CheckRules, CheckEmail, CheckChat);
 
             g.fill();
         }
 
         [Test]
-        public void fillAddPositiveVilniusParkingTest()  //OK
+        public void fillAddPositiveVilniusParkingTest()
         {
             string Region = "Vilnius"; // Miestas arba rajonas
             string Settlement = "Vilniaus"; // Miestas arba kaimas
@@ -52,6 +53,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             string GarageOrParking = "Parking place"; // 1. Garažas; 2. Parkingas
             string Number = "777"; // Objekto numeris
             bool VisibleNumber = false; //Rodyti objekto numerį (true/false)
+            bool VisibleRC = false; // Rodyti unikalų numerį
             string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
             string Area = "50"; // Plotas
             int GarageType = 2; // Garažo tipas: 1. Mūrinis; 2. Geležinis; 3. Požeminis; 4. Daugiaukštis; 5. Kita
@@ -69,7 +71,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
             bool CheckChat = true; // Sutinku su portalo taisyklėmis
 
-            Garage g = new Garage(Region, Settlement, Microdistrict, Street, GarageOrParking, Number, VisibleNumber, RC, Area, GarageType, Accommodation, GarageFeatures, ParkingType, ParkingFeatures, Description, Youtube, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
+            Garage g = new Garage(Region, Settlement, Microdistrict, Street, GarageOrParking, Number, VisibleNumber, VisibleRC, RC, Area, GarageType, Accommodation, GarageFeatures, ParkingType, ParkingFeatures, Description, Youtube, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
 
             g.fill();
         }
