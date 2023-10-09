@@ -21,6 +21,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
 {
     internal class VacantLand : RealEstate
     {
+        public bool VisibleRC { get; set; } 
         public string Area { get; set; }
         public string PhoNo { get; set; }
         public string Email { get; set; }
@@ -31,8 +32,9 @@ namespace aruodas.ltOOPInheritance0731vak.Models
 
         public VacantLand(string city, string settlement, string quarter, string street, string number, bool VisibleNumber, bool visibleRC, string area, string price, string phoNo, string email, string youtubeVideo, string tripleDTour, string rc, string description,
         int[] checkBoxes, int[] details, bool checkRules, bool checkEmail, bool checkChat)
-            : base(city, settlement, quarter, street, number, VisibleNumber, visibleRC, description, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
+            : base(city, settlement, quarter, street, number, VisibleNumber, description, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
         {
+            this.VisibleRC = visibleRC;
             this.Area = area;
             this.PhoNo = phoNo;
             this.Email = email;

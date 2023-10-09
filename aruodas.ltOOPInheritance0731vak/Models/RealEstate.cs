@@ -15,13 +15,13 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
     {
         public IWebDriver Driver { get; set; }
         public WebDriverWait Wait { get; set; }
+
         public string City { get; set; }
         public string Settlement { get; set; }
         public string Quarter { get; set; }
         public string Street { get; set; }
         public string Number { get; set; }
         public bool VisibleNumber { get; set; }
-        public bool VisibleRC { get; set; }
         public string Description { get; set; }
         public string Price { get; set; }
         public string YoutubeVideo { get; set; }
@@ -35,7 +35,7 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
           this.Wait = DriverClass.Wait;
         }
 
-        public RealEstate(string city, string settlement, string quarter, string street, string number, bool visibleNumber, bool visibleRC, string description, string youtubeVideo, string tripleDTour, string price, bool checkRules, bool checkEmail, bool checkChat)
+        public RealEstate(string city, string settlement, string quarter, string street, string number, bool visibleNumber, string description, string youtubeVideo, string tripleDTour, string price, bool checkRules, bool checkEmail, bool checkChat)
         {
             this.Driver = DriverClass.Driver;
             this.Wait = DriverClass.Wait;
@@ -46,14 +46,13 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             this.Street = street;
             this.Number = number;
             this.VisibleNumber = visibleNumber;
-            this.VisibleRC = visibleRC;
             this.Description = description;
             this.YoutubeVideo = youtubeVideo;
             this.TripleDTour = tripleDTour;
             this.Price = price;
-            this.CheckRules = true;
-            this.CheckEmail = true;
-            this.CheckChat = true;
+            this.CheckRules = checkRules;
+            this.CheckEmail = checkEmail;
+            this.CheckChat = checkChat;
         }
 
         public virtual void fill()
@@ -64,12 +63,10 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             agreeToRules();
             Driver.FindElement(By.Name("FHouseNum")).SendKeys(this.Number);
             ToggleVisibleNumber();
-            ToggleVisibleRC();
             Driver.FindElement(By.Name("notes_lt")).SendKeys(this.Description);
             ObjectPrice();
             Driver.FindElement(By.Name("Video")).SendKeys(this.YoutubeVideo);
             Driver.FindElement(By.Name("tour_3d")).SendKeys(this.TripleDTour);
-            
         }
 
 
@@ -83,16 +80,7 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             }
                 
         }
-        public void ToggleVisibleRC()
-        {
-            if (VisibleRC == true)
-                return;
-            else
-            {
-                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[11]/div[2]/div/label/span")).Click();
-            }
-
-        }
+       
         public void ChooseLocation()
         {
             int pos = 3;

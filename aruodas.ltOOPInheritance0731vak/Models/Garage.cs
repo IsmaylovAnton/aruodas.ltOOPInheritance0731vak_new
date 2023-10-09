@@ -19,6 +19,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
     internal class Garage : RealEstate
     {
         public string GarageParkPlace { get; set; }
+        public bool VisibleRC { get; set; } 
         public string RC { get; set; }
         public string Area { get; set; }
         public int GarageDetails { get; set; }
@@ -29,14 +30,15 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public string PhoNo { get; set; }
         public string Email { get; set; }
 
-        public Garage(string city, string settlement, string quarter, string street, string garageParkPlace, string number, bool visibleNumber, bool visibleRC, string rc, string area, int garageDetails, int carQuantity, int[] garageProperties, int parkingDetails, int[] parkingProperties, string description, string youtubeVideo, string tripleDTour, string price, 
-            string phoNo, string email, bool checkRules, bool checkEmail, bool checkChat) 
-            : base(city, settlement, quarter, street, number, visibleNumber, visibleRC, description, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
+        public Garage(string city, string settlement, string quarter, string street, string garageParkPlace, string number, bool visibleNumber, bool visibleRC, string rc, string area, int garageDetails, int carQuantity, int[] garageProperties, int parkingDetails, int[] parkingProperties, string description, string youtubeVideo, string tripleDTour, string price,
+           string phoNo, string email, bool checkRules, bool checkEmail, bool checkChat)
+              : base(city, settlement, quarter, street, number, visibleNumber, description, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
         {
             this.GarageParkPlace = garageParkPlace;
             this.RC = rc;
             this.Area = area;
             this.GarageDetails = garageDetails;
+            this.VisibleRC = visibleRC;
             this.CarQuantity = carQuantity;
             this.GarageProperties = garageProperties;
             this.ParkingDetails = parkingDetails;
@@ -50,7 +52,9 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Driver.Navigate().GoToUrl("https://www.aruodas.lt/ideti-skelbima/?obj=13&offer_type=1");
             base.fill(); 
             GarageOrParking();
-            ToggleVisibleNumber();
+            ToggleVisibleRC();
+            ToggleVisibleNumber(); 
+            Driver.FindElement(By.Name("RCNumber")).SendKeys(this.RC);
             Driver.FindElement(By.Id("fieldFAreaOverAll")).SendKeys(this.Area);
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[38]/span[1]/input")).SendKeys(this.PhoNo);
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/span[1]/input")).Clear();
@@ -58,18 +62,6 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Accommodation();
             Photo();
             //Driver.FindElement(By.Id("submitFormButton")).Click();
-        }
-
-        public void ToggleVisibleNumber()
-        {
-            if (VisibleNumber == true)
-            {
-                return;
-            }
-            else
-            {
-                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[8]/div/div/label/span")).Click();
-            }
         }
 
         public void Accommodation()
@@ -91,14 +83,40 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             }
         }
 
+
+        public void ToggleVisibleNumber()
+        {
+            if (VisibleNumber == true)
+                return;
+            else
+            {
+                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[8]/div/div/label")).Click();
+            }
+
+        }
+
+
+
+        public void ToggleVisibleRC()
+        {
+            if (VisibleRC == true)
+            {
+                return;
+            }
+            else
+            {
+                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[12]/div[2]/div/label")).Click();
+            }
+        }
+
         public void GarageOrParking()
         {
-            if (GarageParkPlace == "Garažas")
+            if (GarageParkPlace == "Garage")
             {
                 GarageType();
                 GarageFeatures();
             }
-            else if (GarageParkPlace == "Parkingas")
+            else if (GarageParkPlace == "Parking place")
             {
                 Driver.FindElement(By.XPath("//*[@id=\"whole_building_checkbox\"]/div/label")).Click();
                 ParkingType();
@@ -182,7 +200,6 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[4]/div[2]")).Click();
                     break;
             }
-
         }
 
         public void ParkingFeatures()
@@ -219,18 +236,16 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                     case 9:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[27]/div/div/div/label")).Click();
                         break;
-
                 }
             }
         }
-
 
         public void Photo()
         {
             IWebElement chooseFile = Driver.FindElement(By.XPath("//*[@id=\"uploadPhotoBtn\"]/input"));
             chooseFile.SendKeys("C:\\Users\\user\\Desktop\\Aruodas\\Garaz\\sip-medinis-garazas-3.jpg");
         }
-        
+
     }
 }
 

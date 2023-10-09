@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace aruodas.ltOOPInheritance0731vak.Helpers
 {
-    internal class DescriptionFlat
+    internal class DescriptionPlot
     {
-        public static string LongDescription = "Nulla eget aliquet lorem. Curabitur dapibus consequat est, vitae interdum nisl ornare finibus. " +
-            "Vivamus pretium luctus commodo. Vestibulum a sem nisi. Integer vel metus a mauris elementum semper at eu lorem. Aenean sit amet lacinia quam. " +
-            "Mauris leo nulla, mattis quis leo id, iaculis tristique magna. Aenean convallis volutpat leo ullamcorper ullamcorper. Vivamus purus nulla, accumsan vel quam nec, vestibulum faucibus nulla. " +
-            "Aliquam consectetur egestas odio, nec porta lacus tempus a..";
+        public static string LongDescription = "Phasellus tristique vitae est ac tristique. Quisque ut mi in nunc sollicitudin sodales. Pellentesque venenatis" +
+            "turpis et laoreet vestibulum. Nullam egestas tristique mauris in sollicitudin. Vivamus facilisis, justo id gravida suscipit, elit velit aliquam orci, a ultrices justo purus vel metus. Maecenas bibendum auctor quam, ut malesuada ipsum bibendum at. Sed tristique metus quis lacus sollicitudin, ac lacinia elit vestibulum. Aliquam erat volutpat. Donec facilisis mi a auctor eleifend. Sed ultrices nulla in justo venenatis, nec bibendum libero congue. " +
+            "Phasellus vel sollicitudin sapien. Vestibulum non feugiat nulla.";
     }
 }

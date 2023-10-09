@@ -13,7 +13,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace aruodas.ltOOPInheritance0731vak.Tests
 {
-    internal class PlotTests
+    internal class VacantLandTests
     {
         public static IWebDriver driver;
 
