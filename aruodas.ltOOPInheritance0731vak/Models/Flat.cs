@@ -5,63 +5,90 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace aruodas.ltOOPInheritance0731vak.Helpers
 {
-    internal class RealEstate
+    internal class Flat : RealEstate
     {
         public IWebDriver Driver { get; set; }
         public WebDriverWait Wait { get; set; }
 
-        public string City { get; set; }
-        public string Settlement { get; set; }
-        public string Quarter { get; set; }
-        public string Street { get; set; }
-        public string Number { get; set; }
         public bool VisibleNumber { get; set; }
+        public string FlatNumber { get; set; } 
+        public bool VisibleFlatNumber { get; set; }   
+        public int RoomCount { get; set; }
+        public int Floor { get; set; }
+        public int TotalFloors { get; set; }    
+        public string YearBuilt { get; set; }  
+        public bool Renovated { get; set; }   
+        public int HouseType { get; set; } 
+        public int Equipment {  get; set; } 
+        public int[] Heating {  get; set; }   
+        public bool Details {  get; set; }  
+        public int[] Properties {  get; set; }    
+        public int[] Premises {  get; set; }  
+        public int[] AddEquipment { get; set; }  
+        public int[] Security {  get; set; }
+        public int EnergyClass { get; set; }
+        public string Area {  get; set; }   
+        public string RC { get; set; }
+        public bool VisibleRC { get; set; }
         public string Description { get; set; }
-        public string Price { get; set; }
         public string YoutubeVideo { get; set; }
         public string TripleDTour { get; set; }
-        public bool CheckRules { get; set; }
-        public bool CheckEmail { get; set; }
-        public bool CheckChat { get; set; }
-        public RealEstate()
+        public string Price { get; set; }
+
+
+        public Flat()
         {
           this.Driver = DriverClass.Driver;
           this.Wait = DriverClass.Wait;
         }
 
-        public RealEstate(string city, string settlement, string quarter, string street, string number, bool visibleNumber, string description, string youtubeVideo, string tripleDTour, string price, bool checkRules, bool checkEmail, bool checkChat)
+
+        public Flat(string city, string settlement, string quarter, string street, string number, bool visibleNumber, string flatNumber, bool visibleFlatNumber, int roomCount, int floor, int totalFloors, string yearBuilt, bool renovated, int houseType, 
+            int equipment, int[] heating, bool details, int[] properties, int[] premises, int[] addEquipment, int[] security, int energyClass, string area, string rc, bool VisibleRC, string description, string youtubeVideo, string tripleDTour, string price, string PhoNo, string Email, bool checkRules, bool checkEmail, bool checkChat)
+            : base(city, settlement, quarter, street, number, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
         {
             this.Driver = DriverClass.Driver;
             this.Wait = DriverClass.Wait;
 
-            this.City = city;
-            this.Settlement = settlement;
-            this.Quarter = quarter;
-            this.Street = street;
-            this.Number = number;
             this.VisibleNumber = visibleNumber;
+            this.FlatNumber = flatNumber;
+            this.VisibleFlatNumber = visibleFlatNumber;
+            this.RoomCount = roomCount;
+            this.Floor = floor;
+            this.TotalFloors = totalFloors;
+            this.YearBuilt = yearBuilt;
+            this.Renovated = renovated;
+            this.HouseType = houseType;
+            this.Equipment = equipment;
+            this.Heating = heating;
+            this.Details = details;
+            this.Properties = properties;
+            this.Premises = premises;
+            this.AddEquipment = addEquipment;
+            this.Security = security;
+            this.EnergyClass = energyClass;
+            this.Area = area;
+            this.RC = rc;
+            this.VisibleRC = VisibleRC;            
             this.Description = description;
             this.YoutubeVideo = youtubeVideo;
             this.TripleDTour = tripleDTour;
             this.Price = price;
-            this.CheckRules = checkRules;
-            this.CheckEmail = checkEmail;
-            this.CheckChat = checkChat;
         }
 
         public virtual void fill()
         {
-            ChooseLocation();
-            emailCheck();
-            chatCheck();
-            agreeToRules();
-            Driver.FindElement(By.Name("FHouseNum")).SendKeys(this.Number);
+            Driver.Navigate().GoToUrl("https://www.aruodas.lt/ideti-skelbima/?obj=1");
+            base.fill();
+            ToggleVisibleFlatNumber();
+            Driver.FindElement(By.Name("FApartNum")).SendKeys(this.FlatNumber);
             ToggleVisibleNumber();
             Driver.FindElement(By.Name("notes_lt")).SendKeys(this.Description);
             ObjectPrice();
@@ -72,15 +99,24 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
 
         public void ToggleVisibleNumber()
         {
-            if (VisibleNumber == true)
+            if (VisibleFlatNumber == true)
                 return;
             else 
             { 
                 Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[7]/div/div/label")).Click(); 
             }
-                
         }
-       
+
+        public void ToggleVisibleFlatNumber()
+        {
+            if (VisibleFlatNumber == true)
+                return;
+            else
+            {
+                Driver.FindElement(By.Id("cbshow_apart_num")).Click();
+            }
+        }
+
         public void ChooseLocation()
         {
             int pos = 3;
@@ -168,7 +204,6 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
                 list[list.Count - 3].FindElement(By.ClassName("input-style-checkbox")).FindElement(By.TagName("span")).Click();
             }
         }
-
     }
 
 

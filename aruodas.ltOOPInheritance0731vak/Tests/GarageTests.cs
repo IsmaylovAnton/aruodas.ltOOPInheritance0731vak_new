@@ -3,6 +3,8 @@ using aruodas.ltOOPInheritance0731vak.Models;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+
+
 namespace aruodas.ltOOPInheritance0731vak.Tests
 {
     internal class garageTests
@@ -22,7 +24,6 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
             string Area = "50"; // Plotas
             int GarageType = 2; // Garažo tipas: 1. Mūrinis; 2. Geležinis; 3. Požeminis; 4. Daugiaukštis; 5. Kita
-            int Accommodation = 3; //Telpa automobilių
             int[] GarageFeatures = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }; // Garažo ypatybės: 1. Apsauga; 2. Automatiniai vartai; 3. Duobė; 4. Rūsys; 5. Vanduo; 6. Šildymas; 7. Domina keitimas; 8. Varžytinės/aukcionas 
             int ParkingType = 1; // Parkingo tipas: 1. Požeminėje aikštelėje; 2. Antžeminėje aikštelėje; 3. Daugiaaukštėje aikštelėje; 4. Kita
             int[] ParkingFeatures = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }; // 1. Apsauga; 2. Automatiniai vartai; 3. Šildymas; 4. Užraktas; 5. Aptverta; 6. Po stogu; 7. Su sandėliuku 
@@ -37,7 +38,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool CheckChat = true; // Sutinku su portalo taisyklėmis
 
            
-            Garage g = new Garage(Region, Settlement, Microdistrict, Street, GarageOrParking, Number, VisibleNumber, VisibleRC, RC, Area, GarageType, Accommodation, GarageFeatures, ParkingType, ParkingFeatures, Description, Youtube, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
+            Garage g = new Garage(Region, Settlement, Microdistrict, Street, GarageOrParking, Number, VisibleNumber, VisibleRC, RC, Area, GarageType, GarageFeatures, ParkingType, ParkingFeatures, Description, Youtube, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
 
             g.fill();
         }
@@ -56,7 +57,6 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
             string Area = "50"; // Plotas
             int GarageType = 2; // Garažo tipas: 1. Mūrinis; 2. Geležinis; 3. Požeminis; 4. Daugiaukštis; 5. Kita
-            int Accommodation = 3; //Telpa automobilių
             int[] GarageFeatures = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }; // Garažo ypatybės: 1. Apsauga; 2. Automatiniai vartai; 3. Duobė; 4. Rūsys; 5. Vanduo; 6. Šildymas; 7. Domina keitimas; 8. Varžytinės/aukcionas 
             int ParkingType = 2; // Parkingo tipas: 1. Požeminėje aikštelėje; 2.Antžeminėje aikštelėje; 3. Daugiaaukštėje aikštelėje; 4. Kita
             int[] ParkingFeatures = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }; // 1. Apsauga; 2. Automatiniai vartai; 3. Šildymas; 4. Užraktas; 5. Aptverta; 6. Po stogu; 7. Su sandėliuku 
@@ -71,7 +71,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool CheckChat = true; // Sutinku su portalo taisyklėmis
 
            
-            Garage g = new Garage(Region, Settlement, Microdistrict, Street, GarageOrParking, Number, VisibleNumber, VisibleRC, RC, Area, GarageType, Accommodation, GarageFeatures, ParkingType, ParkingFeatures, Description, Youtube, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
+            Garage g = new Garage(Region, Settlement, Microdistrict, Street, GarageOrParking, Number, VisibleNumber, VisibleRC, RC, Area, GarageType, GarageFeatures, ParkingType, ParkingFeatures, Description, Youtube, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
 
             g.fill();
         }
@@ -83,7 +83,6 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
                 return;
             }
             DriverClass.Driver = new ChromeDriver();
-            //DriverClass.Wait = new WebDriverWait(DriverClass.Driver, TimeSpan.FromSeconds(5));
             driver = DriverClass.Driver;
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
             driver.Manage().Window.Maximize();

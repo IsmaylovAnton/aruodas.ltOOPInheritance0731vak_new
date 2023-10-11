@@ -46,7 +46,6 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             this.Street = street;
             this.Number = number;
             this.VisibleNumber = visibleNumber;
-            this.Description = description;
             this.YoutubeVideo = youtubeVideo;
             this.TripleDTour = tripleDTour;
             this.Price = price;
@@ -54,6 +53,7 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             this.CheckEmail = checkEmail;
             this.CheckChat = checkChat;
         }
+                
 
         public virtual void fill()
         {
@@ -63,7 +63,6 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             agreeToRules();
             Driver.FindElement(By.Name("FHouseNum")).SendKeys(this.Number);
             ToggleVisibleNumber();
-            Driver.FindElement(By.Name("notes_lt")).SendKeys(this.Description);
             ObjectPrice();
             Driver.FindElement(By.Name("Video")).SendKeys(this.YoutubeVideo);
             Driver.FindElement(By.Name("tour_3d")).SendKeys(this.TripleDTour);

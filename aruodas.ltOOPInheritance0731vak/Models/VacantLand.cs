@@ -28,11 +28,12 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public string RC { get; set; }
         public int[] CheckBoxes { get; set; }
         public int[] Details { get; set; }
+        public string Description {  get; set; }    
 
 
         public VacantLand(string city, string settlement, string quarter, string street, string number, bool VisibleNumber, bool visibleRC, string area, string price, string phoNo, string email, string youtubeVideo, string tripleDTour, string rc, string description,
         int[] checkBoxes, int[] details, bool checkRules, bool checkEmail, bool checkChat)
-            : base(city, settlement, quarter, street, number, VisibleNumber, description, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
+            //: base(city, settlement, quarter, street, number, VisibleNumber, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
         {
             this.VisibleRC = visibleRC;
             this.Area = area;
@@ -47,6 +48,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         {
             Driver.Navigate().GoToUrl("https://www.aruodas.lt/ideti-skelbima/?obj=11&offer_type=1");
             base.fill();
+            Driver.FindElement(By.Name("notes_lt")).SendKeys(DescriptionPlot.LongDescription);
             MarkDetails();
             Purpose();
             ToggleVisibleRC();

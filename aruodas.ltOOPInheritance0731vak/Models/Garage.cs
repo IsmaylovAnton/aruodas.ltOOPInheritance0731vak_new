@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
-using SeleniumExtras.WaitHelpers;
+
 
 namespace aruodas.ltOOPInheritance0731vak.Models
 {
@@ -23,23 +23,21 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public string RC { get; set; }
         public string Area { get; set; }
         public int GarageDetails { get; set; }
-        public int CarQuantity { get; set; }
         public int[] GarageProperties { get; set; }
         public int ParkingDetails { get; set; }
         public int[] ParkingProperties { get; set; }
         public string PhoNo { get; set; }
         public string Email { get; set; }
 
-        public Garage(string city, string settlement, string quarter, string street, string garageParkPlace, string number, bool visibleNumber, bool visibleRC, string rc, string area, int garageDetails, int carQuantity, int[] garageProperties, int parkingDetails, int[] parkingProperties, string description, string youtubeVideo, string tripleDTour, string price,
+        public Garage(string city, string settlement, string quarter, string street, string garageParkPlace, string number, bool visibleNumber, bool visibleRC, string rc, string area, int garageDetails, int[] garageProperties, int parkingDetails, int[] parkingProperties, string description, string youtubeVideo, string tripleDTour, string price,
            string phoNo, string email, bool checkRules, bool checkEmail, bool checkChat)
-              : base(city, settlement, quarter, street, number, visibleNumber, description, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
+              : base(city, settlement, quarter, street, number, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
         {
             this.GarageParkPlace = garageParkPlace;
             this.RC = rc;
             this.Area = area;
             this.GarageDetails = garageDetails;
             this.VisibleRC = visibleRC;
-            this.CarQuantity = carQuantity;
             this.GarageProperties = garageProperties;
             this.ParkingDetails = parkingDetails;
             this.ParkingProperties = parkingProperties;
@@ -59,30 +57,9 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[38]/span[1]/input")).SendKeys(this.PhoNo);
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/span[1]/input")).Clear();
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/span[1]/input")).SendKeys(this.Email);
-            Accommodation();
             Photo();
             //Driver.FindElement(By.Id("submitFormButton")).Click();
         }
-
-        public void Accommodation()
-        {
-            switch (CarQuantity)
-            {
-                case 1:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[1]/div[2]")).Click();
-                    break;
-                case 2:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/div[2]/div[2]")).Click();
-                    break;
-                case 3:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/div[3]/div[2]")).Click();
-                    break;
-                case 4:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/div[4]/div[2]")).Click();
-                    break;
-            }
-        }
-
 
         public void ToggleVisibleNumber()
         {
@@ -94,8 +71,6 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             }
 
         }
-
-
 
         public void ToggleVisibleRC()
         {
@@ -155,10 +130,10 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                 switch (GarageProperties[i])
                 {
                     case 1:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[22]/div/div[1]/label")).Click();
+                        Driver.FindElement(By.Name("cb_FGarageFeatures_1")).Click();
                         break;
                     case 2:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[22]/div/div[2]/label")).Click();
+                        Driver.FindElement(By.Name("cb_FGarageFeatures_2")).Click();
                         break;
                     case 3:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[22]/div/div[3]/label")).Click();
