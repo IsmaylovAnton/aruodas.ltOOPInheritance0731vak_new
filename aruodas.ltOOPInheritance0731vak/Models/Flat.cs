@@ -17,8 +17,9 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
         public IWebDriver Driver { get; set; }
         public WebDriverWait Wait { get; set; }
 
+        public string Number { get; set; }
         public bool VisibleNumber { get; set; }
-        public string FlatNumber { get; set; } 
+        public string FlatNumber { get; set; }
         public bool VisibleFlatNumber { get; set; }   
         public int RoomCount { get; set; }
         public int Floor { get; set; }
@@ -50,13 +51,14 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
         }
 
 
-        public Flat(string city, string settlement, string quarter, string street, string number, bool visibleNumber, string flatNumber, bool visibleFlatNumber, int roomCount, int floor, int totalFloors, string yearBuilt, bool renovated, int houseType, 
+        public Flat(string region, string settlement, string microdistrict, string street, string number, bool visibleNumber, string flatNumber, bool visibleFlatNumber, int roomCount, int floor, int totalFloors, string yearBuilt, bool renovated, int houseType, 
             int equipment, int[] heating, bool details, int[] properties, int[] premises, int[] addEquipment, int[] security, int energyClass, string area, string rc, bool VisibleRC, string description, string youtubeVideo, string tripleDTour, string price, string PhoNo, string Email, bool checkRules, bool checkEmail, bool checkChat)
-            : base(city, settlement, quarter, street, number, youtubeVideo, tripleDTour, price, checkRules, checkEmail, checkChat)
+            : base(region, settlement, microdistrict, street, checkRules, checkEmail, checkChat)
         {
             this.Driver = DriverClass.Driver;
             this.Wait = DriverClass.Wait;
 
+            this.Number = number;
             this.VisibleNumber = visibleNumber;
             this.FlatNumber = flatNumber;
             this.VisibleFlatNumber = visibleFlatNumber;
@@ -96,7 +98,6 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             Driver.FindElement(By.Name("tour_3d")).SendKeys(this.TripleDTour);
         }
 
-
         public void ToggleVisibleNumber()
         {
             if (VisibleFlatNumber == true)
@@ -120,12 +121,12 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
         public void ChooseLocation()
         {
             int pos = 3;
-            LocationGeneration(0, 0, this.City);
+            LocationGeneration(0, 0, this.Region);
             Thread.Sleep(1000);
             LocationGeneration(1, 1, this.Settlement);
             try
             {
-                LocationGeneration(2, 2, this.Quarter);
+                LocationGeneration(2, 2, this.Microdistrict);
                 Thread.Sleep(1000);
             }
             catch
@@ -178,32 +179,32 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
         }
 
-        public void emailCheck()
-        {
-            if (CheckEmail)
-            {
-                IList<IWebElement> list = Driver.FindElement(By.ClassName("new-object-from")).FindElements(By.TagName("li"));
-                list[list.Count - 5].FindElement(By.ClassName("input-style-checkbox")).FindElement(By.TagName("span")).Click();
-            }
-        }
+        //public void emailCheck()
+        //{
+        //    if (CheckEmail)
+        //    {
+        //        IList<IWebElement> list = Driver.FindElement(By.ClassName("new-object-from")).FindElements(By.TagName("li"));
+        //        list[list.Count - 5].FindElement(By.ClassName("input-style-checkbox")).FindElement(By.TagName("span")).Click();
+        //    }
+        //}
      
-        public void chatCheck()
-        {
-            if (CheckChat)
-            {
-                IList<IWebElement> list = Driver.FindElement(By.ClassName("new-object-from")).FindElements(By.TagName("li"));
-                list[list.Count - 4].FindElement(By.ClassName("input-style-checkbox")).FindElement(By.TagName("span")).Click();
-            }
-        }
+        //public void chatCheck()
+        //{
+        //    if (CheckChat)
+        //    {
+        //        IList<IWebElement> list = Driver.FindElement(By.ClassName("new-object-from")).FindElements(By.TagName("li"));
+        //        list[list.Count - 4].FindElement(By.ClassName("input-style-checkbox")).FindElement(By.TagName("span")).Click();
+        //    }
+        //}
 
-        public void agreeToRules()
-        {
-            if (CheckRules)
-            {
-                IList<IWebElement> list = Driver.FindElement(By.ClassName("new-object-from")).FindElements(By.TagName("li"));
-                list[list.Count - 3].FindElement(By.ClassName("input-style-checkbox")).FindElement(By.TagName("span")).Click();
-            }
-        }
+    //    public void agreeToRules()
+    //    {
+    //        if (CheckRules)
+    //        {
+    //            IList<IWebElement> list = Driver.FindElement(By.ClassName("new-object-from")).FindElements(By.TagName("li"));
+    //            list[list.Count - 3].FindElement(By.ClassName("input-style-checkbox")).FindElement(By.TagName("span")).Click();
+    //        }
+    //    }
     }
 
 

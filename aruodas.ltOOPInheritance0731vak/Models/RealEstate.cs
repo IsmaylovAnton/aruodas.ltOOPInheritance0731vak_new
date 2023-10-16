@@ -16,79 +16,51 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
         public IWebDriver Driver { get; set; }
         public WebDriverWait Wait { get; set; }
 
-        public string City { get; set; }
+        public string Region { get; set; }
         public string Settlement { get; set; }
-        public string Quarter { get; set; }
+        public string Microdistrict { get; set; }
         public string Street { get; set; }
-        public string Number { get; set; }
-        public bool VisibleNumber { get; set; }
-        public string Description { get; set; }
-        public string Price { get; set; }
-        public string YoutubeVideo { get; set; }
-        public string TripleDTour { get; set; }
-        public bool CheckRules { get; set; }
         public bool CheckEmail { get; set; }
         public bool CheckChat { get; set; }
+        public bool CheckRules { get; set; }
+              
         public RealEstate()
         {
           this.Driver = DriverClass.Driver;
           this.Wait = DriverClass.Wait;
         }
 
-        public RealEstate(string city, string settlement, string quarter, string street, string number, bool visibleNumber, string description, string youtubeVideo, string tripleDTour, string price, bool checkRules, bool checkEmail, bool checkChat)
+        public RealEstate(string region, string settlement, string microdistrict, string street, bool checkEmail, bool checkChat, bool checkRules)
         {
             this.Driver = DriverClass.Driver;
             this.Wait = DriverClass.Wait;
 
-            this.City = city;
+            this.Region = region;
             this.Settlement = settlement;
-            this.Quarter = quarter;
+            this.Microdistrict = microdistrict;
             this.Street = street;
-            this.Number = number;
-            this.VisibleNumber = visibleNumber;
-            this.YoutubeVideo = youtubeVideo;
-            this.TripleDTour = tripleDTour;
-            this.Price = price;
             this.CheckRules = checkRules;
             this.CheckEmail = checkEmail;
             this.CheckChat = checkChat;
         }
                 
-
         public virtual void fill()
         {
             ChooseLocation();
             emailCheck();
             chatCheck();
             agreeToRules();
-            Driver.FindElement(By.Name("FHouseNum")).SendKeys(this.Number);
-            ToggleVisibleNumber();
-            ObjectPrice();
-            Driver.FindElement(By.Name("Video")).SendKeys(this.YoutubeVideo);
-            Driver.FindElement(By.Name("tour_3d")).SendKeys(this.TripleDTour);
         }
-
-
-        public void ToggleVisibleNumber()
-        {
-            if (VisibleNumber == true)
-                return;
-            else 
-            { 
-                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[7]/div/div/label")).Click(); 
-            }
-                
-        }
-       
+                      
         public void ChooseLocation()
         {
             int pos = 3;
-            LocationGeneration(0, 0, this.City);
+            LocationGeneration(0, 0, this.Region);
             Thread.Sleep(1000);
             LocationGeneration(1, 1, this.Settlement);
             try
             {
-                LocationGeneration(2, 2, this.Quarter);
+                LocationGeneration(2, 2, this.Microdistrict);
                 Thread.Sleep(1000);
             }
             catch
@@ -108,7 +80,6 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
                 Console.WriteLine("gatves");
             }
         }
-
         public void LocationGeneration(int xpath, int pos, string searchText)
         {
             string[] Xpaths = { "//*[@id=\"newObjectForm\"]/ul/li[3]/span[1]/span", "//*[@id=\"district\"]/span", "//*[@id=\"quartalField\"]/span[1]/span[2]", "//*[@id=\"streetField\"]/span[1]/span[2]" };
@@ -136,11 +107,6 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
             }
         }
 
-        public void ObjectPrice()
-        {
-            Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
-        }
-
         public void emailCheck()
         {
             if (CheckEmail)
@@ -149,7 +115,7 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
                 list[list.Count - 5].FindElement(By.ClassName("input-style-checkbox")).FindElement(By.TagName("span")).Click();
             }
         }
-     
+
         public void chatCheck()
         {
             if (CheckChat)
@@ -167,10 +133,6 @@ namespace aruodas.ltOOPInheritance0731vak.Helpers
                 list[list.Count - 3].FindElement(By.ClassName("input-style-checkbox")).FindElement(By.TagName("span")).Click();
             }
         }
-
     }
-
-
-
 
 }
