@@ -16,6 +16,7 @@ using SeleniumExtras.WaitHelpers;
 using OpenQA.Selenium.DevTools.V114.Audits;
 using OpenQA.Selenium.DevTools.V114.Debugger;
 using System.Runtime.CompilerServices;
+using aruodas.ltOOPInheritance0731vak.Helpers.Plot;
 
 namespace aruodas.ltOOPInheritance0731vak.Models
 {
@@ -29,7 +30,6 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public string Area { get; set; }
         public int[] WhatPurpose { get; set; }
         public int[] DetailsDescription { get; set; }
-        public string Description { get; set; }
         public string Photo { get; set; }
         public string YoutubeVideo { get; set; }
         public string TripleDTour { get; set; }
@@ -39,7 +39,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
 
 
         public VacantLand(string language, string region, string settlement, string microdistrict, string street, string number, bool visibleNumber, string rc, bool visibleRC, string area, int[] whatPurpose,
-            int[] detailsDescription, string description, string photo, string youtubeVideo, string tripleDTour, string price, string phoNo, string email, bool checkRules, bool checkEmail, bool checkChat)
+            int[] detailsDescription, string photo, string youtubeVideo, string tripleDTour, string price, string phoNo, string email, bool checkRules, bool checkEmail, bool checkChat)
             : base(region, settlement, microdistrict, street, checkRules, checkEmail, checkChat)
         {
             this.Language = language;
@@ -50,7 +50,6 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             this.Area = area;
             this.WhatPurpose = whatPurpose;
             this.DetailsDescription = detailsDescription;
-            this.Description = description;
             this.Photo = photo;
             this.YoutubeVideo = youtubeVideo;
             this.TripleDTour = tripleDTour;
@@ -70,7 +69,6 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Details();
             Driver.FindElement(By.Id("fieldFAreaOverAll")).SendKeys(this.Area);
             Purpose();
-            Driver.FindElement(By.Name("notes_lt")).SendKeys(DescriptionPlot.LongDescription);
             ObjectPhoto();
             Driver.FindElement(By.Name("Video")).SendKeys(this.YoutubeVideo);
             Driver.FindElement(By.Name("tour_3d")).SendKeys(this.TripleDTour);

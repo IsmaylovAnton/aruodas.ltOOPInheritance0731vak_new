@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
-
+using aruodas.ltOOPInheritance0731vak.Helpers.Garage;
 
 namespace aruodas.ltOOPInheritance0731vak.Models
 {
@@ -26,10 +26,10 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public bool VisibleRC { get; set; }
         public string Area { get; set; }
         public int GarageDetails { get; set; }
+        public string Accomodation {  get; set; }   
         public int[] GarageProperties { get; set; }
         public int ParkingDetails { get; set; }
         public int[] ParkingProperties { get; set; }
-        public string Description { get; set; }
         public string GaragePhoto { get; set; }
         public string ParkingPhoto { get; set; }
         public string YoutubeVideo { get; set; }
@@ -38,7 +38,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public string PhoNo { get; set; }
         public string Email { get; set; }
 
-        public Garage(string language, string region, string settlement, string microdistrict, string street, string garageParkPlace, string number, bool visibleNumber, string rc, bool visibleRC, string area, int garageDetails, int[] garageProperties, int parkingDetails, int[] parkingProperties, string description, string garagePhoto, string parkingPhoto, string youtubeVideo, string tripleDTour, string price,
+        public Garage(string language, string region, string settlement, string microdistrict, string street, string garageParkPlace, string number, bool visibleNumber, string rc, bool visibleRC, string area, int garageDetails, string accomodation, int[] garageProperties, int parkingDetails, int[] parkingProperties, string garagePhoto, string parkingPhoto, string youtubeVideo, string tripleDTour, string price,
            string phoNo, string email, bool checkRules, bool checkEmail, bool checkChat)
               : base(region, settlement, microdistrict, street, checkRules, checkEmail, checkChat)
         {
@@ -50,10 +50,10 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             this.VisibleRC = visibleRC;
             this.Area = area;
             this.GarageDetails = garageDetails;
+            this.Accomodation = accomodation;
             this.GarageProperties = garageProperties;
             this.ParkingDetails = parkingDetails;
             this.ParkingProperties = parkingProperties;
-            this.Description = description;
             this.GaragePhoto = garagePhoto;
             this.ParkingPhoto = parkingPhoto;
             this.YoutubeVideo = youtubeVideo;
@@ -72,8 +72,9 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Driver.FindElement(By.Name("RCNumber")).SendKeys(this.RC);
             ToggleVisibleRC();
             Driver.FindElement(By.Id("fieldFAreaOverAll")).SendKeys(this.Area);
-            Driver.FindElement(By.Name("notes_lt")).SendKeys(DescriptionGarage.LongDescription);
+            HowMuchCars();
             ObjectGaragePhoto();
+            Description();           
             ObjectParkingPhoto();
             Driver.FindElement(By.Name("Video")).SendKeys(this.YoutubeVideo);
             Driver.FindElement(By.Name("tour_3d")).SendKeys(this.TripleDTour);
@@ -159,6 +160,13 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                     break;
             }
         }
+
+        public void HowMuchCars() 
+        { 
+            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/span/input")).SendKeys(Accomodation);
+        }
+        
+
 
         public void GarageFeatures()
         {
@@ -268,6 +276,25 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public void ObjectPrice()
         {
             Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
+        }
+
+        public void Description()
+        { 
+            
+            if (Language == "LT")
+            {
+                Driver.FindElement(By.Name("notes_lt")).SendKeys(DescriptionGarageLT.LongDescription);
+            }
+            else if (Language == "EN")
+            {
+                Driver.FindElement(By.ClassName("lang-en-label")).Click();
+                Driver.FindElement(By.Name("notes_en")).SendKeys(DescriptionGarageEN.LongDescription);
+            }
+            else if (Language == "RU")
+            {
+                Driver.FindElement(By.ClassName("lang-ru-label")).Click();
+                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[30]/div/div[3]/textarea")).SendKeys(DescriptionGarageRU.LongDescription);
+            }
         }
 
     }

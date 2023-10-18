@@ -13,6 +13,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
         [Test]
         public void fillAddPositiveVilniusFlatTest()
         {
+            string Language = "RU";// Kalba: 1. LT; 2. EN; 3. RU
             string Region = "Vilnius"; // Miestas arba rajonas
             string Settlement = "Vilniaus"; // Miestas arba kaimas
             string Microdistrict = "Lazdynai"; // Mikrorajonas
@@ -20,12 +21,15 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             string Number = "777"; // Objekto numeris
             bool VisibleNumber = false; //Rodyti objekto numerį (true/false)
             string FlatNumber = "55"; // Buto numeris
-            bool VisibleFlatNumber = false; //Rodyti buto numerį (true/false)
-            int RoomCount = 2; // Kambarių skaičius
-            int Floor = 8; // Aukštas
-            int TotalFloors = 11; // Viso aukštų
+            bool VisibleFlatNumber = true; //Rodyti buto numerį (true/false)
+            string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
+            bool VisibleRC = true; // Rodyti unikalų numerį
+            string Area = "50"; // Plotas
+            string RoomCount = "8"; // Kambarių skaičius
+            string Floor = "18"; // Aukštas
+            string TotalFloors = "19"; // Viso aukštų
             string YearBuilt = "1984"; // PAstatymo metai
-            bool Renovated = false; // Ar renovuotas (true/false)
+            bool Renovated = false; // Ar renovuotas? (true/false)
             int HouseType = 7; // Namo tipas: 1. Brick; 2. Block house; 3.Monolithic; 4. Wooden house; 5. Carcass house; 6. Log house; 7. Panel; 8. Other
             int Equipment = 6; // Įrengimas: 1. Fully equipped; 2. Partially equipped; 3. Not equipped; 4. Under construction; 5. Foundation; 6. Other
             int[] Heating = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; // Šildymas 1. Central; 2. Electric; 3. Liquid; 4. Central thermostat; 5.Geothermal; 6. Aerothermal; 7. Gas; 8. Solid fuel; 9. Sun energy; 10. Other
@@ -34,11 +38,9 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             int[] Premises = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }; // Papildomos patalpos: 1. Storeroom; 2. Balcony; 3. Terrace; 4. Cellar; 5. Sauna; 6. Parking space; 7. Attic; 8. Closet 
             int[] AddEquipment = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 }; //Papildoma įranga:
             int[] Security = new int[] { 1, 2, 3, 4, 5 }; //
-            int EnergyClass = 2; // Pastato energijos suvartojimo klasė: 1. Steel doors; 2; Alarm system; 3. Code door lock; 4. Video surveillance; 5. Guard
-            string Area = "50"; // Plotas
-            string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
-            bool VisibleRC = false; // Rodyti unikalų numerį
-            string Description = DescriptionGarage.LongDescription; // Aprašymas
+            int EnergyClass = 2; // Pastato energijos suvartojimo klasė: 1. Steel doors; 2; Alarm system; 3. Code door lock; 4. Video surveillance; 5. Guard       
+            string Description = Helpers.Flat.DescriptionFlat.LongDescription; // Aprašymas
+            int[] ExchangeAuction = new int[] { 1, 2 }; // 1. Interested in exchange; 2. Sale by auction 
             string Youtube = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // Youtube nuoroda
             string TripleDTour = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // 3D nuoroda
             string Price = "500000"; // Kaina
@@ -48,8 +50,8 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
             bool CheckChat = true; // Sutinku su portalo taisyklėmis
 
-            Flat f = new Flat(Region, Settlement, Microdistrict, Street, Number, VisibleNumber, FlatNumber, VisibleFlatNumber, RoomCount, Floor, TotalFloors, YearBuilt, Renovated, HouseType, Equipment,
-                Heating, Details, Properties, Premises, AddEquipment, Security, EnergyClass, Area, RC, VisibleRC, Description, Youtube, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
+            Flat f = new Flat(Language, Region, Settlement, Microdistrict, Street, Number, VisibleNumber, FlatNumber, VisibleFlatNumber, RC, VisibleRC, Area, RoomCount, Floor, TotalFloors, YearBuilt, Renovated, HouseType, Equipment,
+                Heating, Details, Properties, Premises, AddEquipment, Security, EnergyClass, Description, ExchangeAuction, Youtube, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
 
 
             f.fill();
@@ -58,6 +60,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
         [Test]
         public void fillAddPositiveKaunasFlatTest()
         {
+            string Language = "RU";// Kalba: 1. LT; 2. EN; 3. RU
             string Region = "Vilnius"; // Miestas arba rajonas
             string Settlement = "Vilniaus"; // Miestas arba kaimas
             string Microdistrict = "Lazdynai"; // Mikrorajonas
@@ -65,10 +68,13 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             string Number = "777"; // Objekto numeris
             bool VisibleNumber = false; //Rodyti objekto numerį (true/false)
             string FlatNumber = "55"; // Buto numeris
-            bool VisibleFlatNumber = false; //Rodyti buto numerį (true/false)
-            int RoomCount = 2; // Kambarių skaičius
-            int Floor = 8; // Aukštas
-            int TotalFloors = 11; // Viso aukštų
+            bool VisibleFlatNumber = true; //Rodyti buto numerį (true/false)
+            string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
+            bool VisibleRC = true; // Rodyti unikalų numerį
+            string Area = "50"; // Plotas
+            string RoomCount = "8"; // Kambarių skaičius
+            string Floor = "17"; // Aukštas
+            string TotalFloors = "22"; // Viso aukštų
             string YearBuilt = "1984"; // PAstatymo metai
             bool Renovated = false; // Ar renovuotas (true/false)
             int HouseType = 7; // Namo tipas: 1. Brick; 2. Block house; 3.Monolithic; 4. Wooden house; 5. Carcass house; 6. Log house; 7. Panel; 8. Other
@@ -79,11 +85,9 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             int[] Premises = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }; // Papildomos patalpos: 1. Storeroom; 2. Balcony; 3. Terrace; 4. Cellar; 5. Sauna; 6. Parking space; 7. Attic; 8. Closet 
             int[] AddEquipment = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 }; //Papildoma įranga:
             int[] Security = new int[] { 1, 2, 3, 4, 5 }; //
-            int EnergyClass = 2; // Pastato energijos suvartojimo klasė: 1. Steel doors; 2; Alarm system; 3. Code door lock; 4. Video surveillance; 5. Guard
-            bool VisibleRC = false; // Rodyti unikalų numerį
-            string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
-            string Area = "50"; // Plotas
-            string Description = DescriptionGarage.LongDescription; // Aprašymas
+            int EnergyClass = 2; // Pastato energijos suvartojimo klasė: 1. Steel doors; 2; Alarm system; 3. Code door lock; 4. Video surveillance; 5. Guard       
+            string Description = Helpers.Flat.DescriptionFlat.LongDescription; // Aprašymas
+            int[] ExchangeAuction = new int[] { 1, 2 }; // 1. Interested in exchange; 2. Sale by auction 
             string Youtube = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // Youtube nuoroda
             string TripleDTour = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // 3D nuoroda
             string Price = "500000"; // Kaina
@@ -93,9 +97,8 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
             bool CheckChat = true; // Sutinku su portalo taisyklėmis
 
-            Flat f = new Flat(Region, Settlement, Microdistrict, Street, Number, VisibleNumber, FlatNumber, VisibleFlatNumber, RoomCount, Floor, TotalFloors, YearBuilt, Renovated, HouseType, Equipment,
-                Heating, Details, Properties, Premises, AddEquipment, Security, EnergyClass, Area, RC, VisibleRC, Description, Youtube, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
-
+            Flat f = new Flat(Language, Region, Settlement, Microdistrict, Street, Number, VisibleNumber, FlatNumber, VisibleFlatNumber, RC, VisibleRC, Area, RoomCount, Floor, TotalFloors, YearBuilt, Renovated, HouseType, Equipment,
+                Heating, Details, Properties, Premises, AddEquipment, Security, EnergyClass, Description, ExchangeAuction, Youtube, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
 
             f.fill();
         }
@@ -108,7 +111,6 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
                 return;
             }
             DriverClass.Driver = new ChromeDriver();
-            //DriverClass.Wait = new WebDriverWait(DriverClass.Driver, TimeSpan.FromSeconds(5));
             driver = DriverClass.Driver;
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
             driver.Manage().Window.Maximize();

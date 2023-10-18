@@ -1,4 +1,5 @@
 ﻿using aruodas.ltOOPInheritance0731vak.Helpers;
+using aruodas.ltOOPInheritance0731vak.Helpers.Garage;
 using aruodas.ltOOPInheritance0731vak.Models;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -13,7 +14,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
         [Test]
         public void fillAddPositiveVilniusGarageTest()
         {
-            string Language = "RU";// Kalba: 1. LT; 2. EN; 3. RU
+            string Language = "EN";// Kalba: 1. LT; 2. EN; 3. RU
             string Region = "Vilnius"; // Miestas arba rajonas
             string Settlement = "Vilniaus"; // Miestas arba kaimas
             string Microdistrict = "Lazdynai"; // Mikrorajonas
@@ -25,10 +26,10 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool VisibleRC = true; // Rodyti unikalų numerį
             string Area = "50"; // Plotas
             int GarageDetails = 3; // Garažo tipas: 1. Mūrinis; 2. Geležinis; 3. Požeminis; 4. Daugiaukštis; 5. Kita
+            string Accomodation = "5"; // Kiek telpa automobilių
             int[] GarageProperties = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }; // Garažo ypatybės: 1. Apsauga; 2. Automatiniai vartai; 3. Duobė; 4. Rūsys; 5. Vanduo; 6. Šildymas; 7. Domina keitimas; 8. Varžytinės/aukcionas 
             int ParkingDetails = 1; // Parkingo tipas: 1. Požeminėje aikštelėje; 2. Antžeminėje aikštelėje; 3. Daugiaaukštėje aikštelėje; 4. Kita
             int[] ParkingProperties = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }; // 1. Apsauga; 2. Automatiniai vartai; 3. Šildymas; 4. Užraktas; 5. Aptverta; 6. Po stogu; 7. Su sandėliuku; 8. Domina keitimas; 9. Varžytinės/aukcionas 
-            string Description = DescriptionGarage.LongDescription; // Aprašymas
             string GaragePhoto = "C:\\Users\\user\\Desktop\\Aruodas\\Garaz\\sip-medinis-garazas-3.jpg";// Garažo nuotrauka
             string ParkingPhoto = "C:\\Users\\user\\Desktop\\Aruodas\\Garaz\\parkingas.jpg";// Parkingo nuotrauka
             string Youtube = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // Youtube nuoroda
@@ -40,14 +41,14 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
             bool CheckChat = true; // Sutinku su portalo taisyklėmis
 
-           
-            Garage g = new Garage(Language, Region, Settlement, Microdistrict, Street, GarageParkPlace, Number, VisibleNumber, RC, VisibleRC, Area, GarageDetails, GarageProperties, ParkingDetails, ParkingProperties, Description, GaragePhoto, ParkingPhoto, Youtube, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
+
+            Garage g = new Garage(Language, Region, Settlement, Microdistrict, Street, GarageParkPlace, Number, VisibleNumber, RC, VisibleRC, Area, GarageDetails, Accomodation, GarageProperties, ParkingDetails, ParkingProperties, GaragePhoto, ParkingPhoto, Youtube, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
 
             g.fill();
         }
 
         [Test]
-            public void fillAddPositiveKaunasParkingTest()
+        public void fillAddPositiveKaunasParkingTest()
         {
             string Language = "LT";// Kalba: 1. LT; 2. EN; 3. RU
             string Region = "Vilnius"; // Miestas arba rajonas
@@ -61,10 +62,10 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool VisibleRC = true; // Rodyti unikalų numerį
             string Area = "50"; // Plotas
             int GarageDetails = 3; // Garažo tipas: 1. Mūrinis; 2. Geležinis; 3. Požeminis; 4. Daugiaukštis; 5. Kita
+            string Accomodation = "4"; // Kiek telpa automobilių
             int[] GarageProperties = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }; // Garažo ypatybės: 1. Apsauga; 2. Automatiniai vartai; 3. Duobė; 4. Rūsys; 5. Vanduo; 6. Šildymas; 7. Domina keitimas; 8. Varžytinės/aukcionas 
             int ParkingDetails = 2; // Parkingo tipas: 1. Požeminėje aikštelėje; 2. Antžeminėje aikštelėje; 3. Daugiaaukštėje aikštelėje; 4. Kita
             int[] ParkingProperties = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }; // 1. Apsauga; 2. Automatiniai vartai; 3. Šildymas; 4. Užraktas; 5. Aptverta; 6. Po stogu; 7. Su sandėliuku; 8. Domina keitimas; 9. Varžytinės/aukcionas 
-            string Description = DescriptionGarage.LongDescription; // Aprašymas
             string GaragePhoto = "C:\\Users\\user\\Desktop\\Aruodas\\Garaz\\sip-medinis-garazas-3.jpg";// Garažo nuotrauka
             string ParkingPhoto = "C:\\Users\\user\\Desktop\\Aruodas\\Garaz\\parkingas.jpg";// Parkingo nuotrauka
             string Youtube = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // Youtube nuoroda
@@ -77,7 +78,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool CheckChat = true; // Sutinku su portalo taisyklėmis
 
 
-            Garage g = new Garage(Language, Region, Settlement, Microdistrict, Street, GarageParkPlace, Number, VisibleNumber, RC, VisibleRC, Area, GarageDetails, GarageProperties, ParkingDetails, ParkingProperties, Description, GaragePhoto, ParkingPhoto, Youtube, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
+            Garage g = new Garage(Language, Region, Settlement, Microdistrict, Street, GarageParkPlace, Number, VisibleNumber, RC, VisibleRC, Area, GarageDetails, Accomodation, GarageProperties, ParkingDetails, ParkingProperties, GaragePhoto, ParkingPhoto, Youtube, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
 
             g.fill();
         }
