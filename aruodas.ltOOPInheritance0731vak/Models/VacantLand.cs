@@ -17,6 +17,7 @@ using OpenQA.Selenium.DevTools.V114.Audits;
 using OpenQA.Selenium.DevTools.V114.Debugger;
 using System.Runtime.CompilerServices;
 using aruodas.ltOOPInheritance0731vak.Helpers.Plot;
+using aruodas.ltOOPInheritance0731vak.Helpers.Garage;
 
 namespace aruodas.ltOOPInheritance0731vak.Models
 {
@@ -70,6 +71,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Driver.FindElement(By.Id("fieldFAreaOverAll")).SendKeys(this.Area);
             Purpose();
             ObjectPhoto();
+            Description();
             Driver.FindElement(By.Name("Video")).SendKeys(this.YoutubeVideo);
             Driver.FindElement(By.Name("tour_3d")).SendKeys(this.TripleDTour);
             ObjectPrice();
@@ -215,6 +217,25 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[35]/span[1]/input")).Clear();
         }
 
+        public void Description()
+        {
+
+            if (Language == "LT")
+            {
+                Driver.FindElement(By.Name("notes_lt")).SendKeys(DescriptionGarageLT.LongDescription);
+            }
+            else if (Language == "EN")
+            {
+                Driver.FindElement(By.ClassName("lang-en-label")).Click();
+                Driver.FindElement(By.Name("notes_en")).SendKeys(DescriptionGarageEN.LongDescription);
+            }
+            else if (Language == "RU")
+            {
+                Driver.FindElement(By.ClassName("lang-ru-label")).Click();
+                Driver.FindElement(By.Name("notes_ru")).SendKeys(DescriptionGarageRU.LongDescription);
+            }
+
+        }
     }
 }
  

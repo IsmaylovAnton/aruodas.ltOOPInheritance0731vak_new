@@ -32,13 +32,13 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public int[] ParkingProperties { get; set; }
         public string GaragePhoto { get; set; }
         public string ParkingPhoto { get; set; }
+        public string Price { get; set; }
         public string YoutubeVideo { get; set; }
         public string TripleDTour { get; set; }
-        public string Price { get; set; }
         public string PhoNo { get; set; }
         public string Email { get; set; }
 
-        public Garage(string language, string region, string settlement, string microdistrict, string street, string garageParkPlace, string number, bool visibleNumber, string rc, bool visibleRC, string area, int garageDetails, string accomodation, int[] garageProperties, int parkingDetails, int[] parkingProperties, string garagePhoto, string parkingPhoto, string youtubeVideo, string tripleDTour, string price,
+        public Garage(string language, string region, string settlement, string microdistrict, string street, string garageParkPlace, string number, bool visibleNumber, string rc, bool visibleRC, string area, int garageDetails, string accomodation, int[] garageProperties, int parkingDetails, int[] parkingProperties, string garagePhoto, string parkingPhoto, string price, string youtubeVideo, string tripleDTour, 
            string phoNo, string email, bool checkRules, bool checkEmail, bool checkChat)
               : base(region, settlement, microdistrict, street, checkRules, checkEmail, checkChat)
         {
@@ -56,9 +56,9 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             this.ParkingProperties = parkingProperties;
             this.GaragePhoto = garagePhoto;
             this.ParkingPhoto = parkingPhoto;
+            this.Price = price;
             this.YoutubeVideo = youtubeVideo;
             this.TripleDTour = tripleDTour;
-            this.Price = price;
             this.PhoNo = phoNo;
             this.Email = email;
         }
@@ -73,9 +73,9 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             ToggleVisibleRC();
             Driver.FindElement(By.Id("fieldFAreaOverAll")).SendKeys(this.Area);
             HowMuchCars();
-            ObjectGaragePhoto();
-            Description();           
+            ObjectGaragePhoto();      
             ObjectParkingPhoto();
+            Description();
             Driver.FindElement(By.Name("Video")).SendKeys(this.YoutubeVideo);
             Driver.FindElement(By.Name("tour_3d")).SendKeys(this.TripleDTour);
             ObjectPrice();
@@ -100,7 +100,6 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                 Driver.Navigate().GoToUrl("https://ru.aruodas.lt/ideti-skelbima/?obj=13&offer_type=1");
             }
         }
-        
 
             public void ToggleVisibleNumber()
         {
@@ -143,19 +142,19 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         {
             switch (GarageDetails)
             {
-                case 1: //Stone
+                case 1:
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[1]/div[2]")).Click();
                     break;
-                case 2: //Iron
+                case 2:
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[2]/div[2]")).Click();
                     break;
-                case 3: //Underground:
+                case 3:
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[3]/div[2]")).Click();
                     break;
-                case 4: //Multistory:
+                case 4:
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[4]/div[2]")).Click();
                     break;
-                case 5: //Other:
+                case 5:
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[5]/div[2]")).Click();
                     break;
             }
@@ -164,9 +163,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public void HowMuchCars() 
         { 
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/span/input")).SendKeys(Accomodation);
-        }
-        
-
+        } 
 
         public void GarageFeatures()
         {
@@ -208,16 +205,16 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         {
             switch (ParkingDetails)
             {
-                case 1: // "Underground parking":
+                case 1:
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[1]/div[2]")).Click();
                     break;
-                case 2: // "Parking lot":
+                case 2:
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[2]/div[2]")).Click();
                     break;
-                case 3: // "Multistorey car park":
+                case 3:
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[3]/div[2]")).Click();
                     break;
-                case 4: //"Other":
+                case 4:
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[4]/div[2]")).Click();
                     break;
             }
