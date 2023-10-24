@@ -12,13 +12,12 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
-using aruodas.ltOOPInheritance0731vak.Helpers.Flat;
-using aruodas.ltOOPInheritance0731vak.Helpers.Garage;
+using aruodas.ltOOPInheritance0731vak.Helpers.House;
 using Microsoft.VisualBasic;
 
 namespace aruodas.ltOOPInheritance0731vak.Models
 {
-    internal class Flat : RealEstate
+    internal class House : RealEstate
     {
         public IWebDriver Driver { get; set; }
         public WebDriverWait Wait { get; set; }
@@ -26,21 +25,24 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public string Language { get; set; }
         public string Number { get; set; }
         public bool VisibleNumber { get; set; }
-        public string FlatNumber { get; set; }
-        public bool VisibleFlatNumber { get; set; }
         public string RC { get; set; }
         public bool VisibleRC { get; set; }
         public string Area { get; set; }
-        public string RoomCount { get; set; }
-        public string Floor { get; set; }
         public string TotalFloors { get; set; }
+        public string PlotArea { get; set; }
+        public bool WithoutLand { get; set; }
         public string YearBuilt { get; set; }
         public bool Renovated { get; set; }
         public string WhenRenovated { get; set; }
-        public int HouseType { get; set; }
+        public int BuildingType {  get; set; }  
+        public int HouseType {  get; set; } 
         public int Equipment { get; set; }
         public int[] Heating { get; set; }
         public bool Details { get; set; }
+        public string RoomCount { get; set; }
+        public int WaterBody {  get; set; }  
+        public string DistanceFromWater {  get; set; }  
+        public int[] WaterSystem {  get; set; }   
         public int[] Properties { get; set; }
         public int[] Premises { get; set; }
         public int[] AddEquipment { get; set; }
@@ -55,14 +57,14 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public string Email { get; set; }
         public string PhoNo { get; set; }
 
-        public Flat()
+        public House()
         {
             this.Driver = DriverClass.Driver;
             this.Wait = DriverClass.Wait;
         }
 
-        public Flat(string language, string region, string settlement, string microdistrict, string street, string number, bool visibleNumber, string flatNumber, bool visibleFlatNumber, string rc, bool visibleRC, string area, string roomCount, string floor, string totalFloors, string yearBuilt, bool renovated, string whenRenovated, int houseType,
-            int equipment, int[] heating, bool details, int[] properties, int[] premises, int[] addEquipment, int[] security, int energyClass, bool exchange, bool auction, string flatPhoto, string youtubeVideo, string tripleDTour, string price, string email, bool checkRules, bool checkEmail, bool checkChat, string phoNo)
+        public House(string language, string region, string settlement, string microdistrict, string street, string number, bool visibleNumber, string rc, bool visibleRC, string area, string totalFloors, string plotArea, bool withoutLand, string yearBuilt, bool renovated, string whenRenovated, int buildingType, int houseType, int equipment,
+            int[] heating, bool details, string roomCount, int waterBody, string distanceFromWater, int[] waterSystem, int[] properties, int[] premises, int[] addEquipment, int[] security, int energyClass, bool exchange, bool auction, string flatPhoto, string youtubeVideo, string tripleDTour, string price, string email, bool checkRules, bool checkEmail, bool checkChat, string phoNo)
             : base(region, settlement, microdistrict, street, checkRules, checkEmail, checkChat)
         {
             this.Driver = DriverClass.Driver;
@@ -71,18 +73,24 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             this.Language = language;
             this.Number = number;
             this.VisibleNumber = visibleNumber;
-            this.FlatNumber = flatNumber;
-            this.VisibleFlatNumber = visibleFlatNumber;
-            this.RoomCount = roomCount;
-            this.Floor = floor;
+            this.RC = rc;
+            this.VisibleRC = VisibleRC;
+            this.Area = area;
             this.TotalFloors = totalFloors;
+            this.PlotArea = plotArea;
+            this.WithoutLand = withoutLand;
             this.YearBuilt = yearBuilt;
             this.Renovated = renovated;
             this.WhenRenovated = whenRenovated;
+            this.BuildingType = buildingType;
             this.HouseType = houseType;
             this.Equipment = equipment;
             this.Heating = heating;
+            this.RoomCount = roomCount;
             this.Details = details;
+            this.WaterBody = waterBody;
+            this.DistanceFromWater = distanceFromWater;
+            this.WaterSystem = waterSystem;
             this.Properties = properties;
             this.Premises = premises;
             this.AddEquipment = addEquipment;
@@ -90,10 +98,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             this.EnergyClass = energyClass;
             this.Exchange = exchange;
             this.Auction = auction;
-            this.Area = area;
-            this.RC = rc;
             this.FlatPhoto = flatPhoto;
-            this.VisibleRC = VisibleRC;
             this.YoutubeVideo = youtubeVideo;
             this.TripleDTour = tripleDTour;
             this.Price = price;
@@ -107,32 +112,33 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             base.fill();
             Driver.FindElement(By.Name("FHouseNum")).SendKeys(this.Number);
             ToggleVisibleNumber();
-            Driver.FindElement(By.Name("FApartNum")).SendKeys(this.FlatNumber);
-            ToggleVisibleFlatNumber();
             Driver.FindElement(By.Name("RCNumber")).SendKeys(this.RC);
             ToggleVisibleRC();
-            Driver.FindElement(By.Id("fieldFAreaOverAll")).SendKeys(this.Area);
+            Driver.FindElement(By.Name("FAreaLot")).SendKeys(this.Area);
+            DetailsOnOff();
+            Heat();
             RoomNmbr();
+            BodyOfWater();
+            WaterSys();
             Floors();
             Year();
             Renovation();
+            BTYpe();
             Type();
             Equip();
-            Heat();
-            DetailsOnOff();
             Prop();
             AddPremises();
             EquipmentAdd();
             SecuritySystems();
             Energy();
-            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[46]/span[1]/input")).SendKeys(this.PhoNo);
+            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[52]/span[1]/input")).SendKeys(this.PhoNo);
             Description();
             ObjectPrice();
             Change();
             Auctioner();
             ObjectPhoto();
-            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[47]/span[1]/input")).Clear();
-            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[47]/span[1]/input")).SendKeys(this.Email);
+            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[53]/span[1]/input")).Clear();
+            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[53]/span[1]/input")).SendKeys(this.Email);
             Driver.FindElement(By.Name("Video")).SendKeys(this.YoutubeVideo);
             Driver.FindElement(By.Name("tour_3d")).SendKeys(this.TripleDTour);
             //Driver.FindElement(By.Id("submitFormButton")).Click();
@@ -142,35 +148,35 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         {
             if (Language == "LT")
             {
-                Driver.Navigate().GoToUrl("https://www.aruodas.lt/ideti-skelbima/?obj=1");
+                Driver.Navigate().GoToUrl("https://www.aruodas.lt/ideti-skelbima/?obj=2");
             }
             else if (Language == "EN")
             {
-                Driver.Navigate().GoToUrl("https://en.aruodas.lt/ideti-skelbima/?obj=1");
+                Driver.Navigate().GoToUrl("https://en.aruodas.lt/ideti-skelbima/?obj=2");
             }
             else if (Language == "RU")
             {
-                Driver.Navigate().GoToUrl("https://ru.aruodas.lt/ideti-skelbima/?obj=1");
+                Driver.Navigate().GoToUrl("https://ru.aruodas.lt/ideti-skelbima/?obj=2");
+            }
+        }
+
+        public void DetailsOnOff()
+        {
+            if (Details == true)
+                Driver.FindElement(By.Id("showMoreFields")).Click();
+            else
+            {
+                return;
             }
         }
 
         public void ToggleVisibleNumber()
         {
-            if (VisibleFlatNumber == true)
+            if (VisibleNumber == true)
                 return;
             else
             {
                 Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[7]/div/div/label")).Click();
-            }
-        }
-
-        public void ToggleVisibleFlatNumber()
-        {
-            if (VisibleFlatNumber == true)
-                return;
-            else
-            {
-                Driver.FindElement(By.Id("cbshow_apart_num")).Click();
             }
         }
 
@@ -182,24 +188,69 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             }
             else
             {
-                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[12]/div[2]/div/label")).Click();
+                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[11]/div[2]/div/label")).Click();
             }
         }
 
         public void RoomNmbr()
         {
-            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[15]/div/span/input")).SendKeys(RoomCount);
+            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[25]/div/span/input")).SendKeys(RoomCount);
+        }
+
+        public void BodyOfWater()
+        {
+            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[27]/span[1]/input")).SendKeys(DistanceFromWater);
+            switch (WaterBody)
+            {
+                case 1:
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[26]/div/div[1]/div[2]")).Click();
+                    break;
+                case 2:
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[26]/div/div[2]/div[2]")).Click();
+                    break;
+                case 3:
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[26]/div/div[3]/div[2]")).Click();
+                    break;
+                case 4:
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[26]/div/div[4]/div[2]")).Click();
+                    break;
+            }
+        }
+
+        public void WaterSys()
+        {
+
+            for (int i = 0; i < WaterSystem.Length; i++)
+            {
+                switch (WaterSystem[i])
+                {
+                    case 1:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[1]/label")).Click();
+                        break;
+                    case 2:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[2]/label")).Click();
+                        break;
+                    case 3:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[3]/label")).Click();
+                        break;
+                    case 4:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[4]/label")).Click();
+                        break;
+                    case 5:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[5]/label")).Click();
+                        break;
+                }
+            }
         }
 
         public void Floors()
         {
-            Driver.FindElement(By.XPath("//*[@id=\"fieldRow_FFloor\"]/div[1]/span[2]/input")).SendKeys(Floor);
-            Driver.FindElement(By.XPath("//*[@id=\"fieldRow_FHouseHeight\"]/span[1]/input")).SendKeys(TotalFloors);
+            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[14]/div/span/input")).SendKeys(TotalFloors);
         }
 
         public void Year()
         {
-            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div[1]/span[1]/span/input")).SendKeys(YearBuilt);
+            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div[1]/span[1]/span/input")).SendKeys(YearBuilt);
         }
 
         public void Renovation()
@@ -208,8 +259,33 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                 return;
             else
             {
-                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div[2]/div/div/label")).Click();
+                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div[2]/div/div/label")).Click();
                 Driver.FindElement(By.XPath("//*[@id=\"FRenovatedYear\"]")).SendKeys(WhenRenovated);
+            }
+        }
+
+        public void BTYpe()
+        {
+            switch(BuildingType)
+            {
+                case 1:
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[1]/div[2]")).Click();
+                    break;
+                case 2:
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[2]/div[2]")).Click();
+                    break;
+                case 3:
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[3]/div[2]")).Click();
+                    break;
+                case 4:
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[4]/div[2]")).Click();
+                    break;
+                case 5:
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[5]/div[2]")).Click();
+                    break;
+                case 6:
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[6]/div[2]")).Click();
+                    break;
             }
         }
 
@@ -224,22 +300,22 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/div[2]/div[2]")).Click();
                     break;
                 case 3:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/div[3]/div[2]")).Click();
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[3]/div[2]")).Click();
                     break;
                 case 4:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/div[4]/div[2]")).Click();
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[4]/div[2]")).Click();
                     break;
                 case 5:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/div[5]/div[2]")).Click();
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[5]/div[2]")).Click();
                     break;
                 case 6:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/div[6]/div[2]")).Click();
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[6]/div[2]")).Click();
                     break;
                 case 7:
                     Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/div[7]/div[2]")).Click();
                     break;
                 case 8:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[18]/div/div[8]/div[2]")).Click();
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[17]/div/div[8]/div[2]")).Click();
                     break;
             }
         }
@@ -268,7 +344,6 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                     break;
             }
         }
-
         public void Heat()
         {
 
@@ -310,154 +385,12 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             }
         }
 
-        public void DetailsOnOff()
-        {
-            if (Details == true)
-                Driver.FindElement(By.Id("showMoreFields")).Click();
-            else
-            {
-                return;
-            }
-
-        }
-
         public void Prop()
         {
 
             for (int i = 0; i < Properties.Length; i++)
             {
                 switch (Properties[i])
-                {
-                    case 1:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[25]/div/div[1]/label")).Click();
-                        break;
-                    case 2:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[25]/div/div[2]/label")).Click();
-                        break;
-                    case 3:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[25]/div/div[3]/label")).Click();
-                        break;
-                    case 4:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[25]/div/div[4]/label")).Click();
-                        break;
-                    case 5:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[25]/div/div[5]/label")).Click();
-                        break;
-                    case 6:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[25]/div/div[6]/label")).Click();
-                        break;
-                    case 7:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[25]/div/div[7]/label")).Click();
-                        break;
-                    case 8:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[25]/div/div[8]/label")).Click();
-                        break;
-                    case 9:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[25]/div/div[9]/label")).Click();
-                        break;
-                    case 10:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[25]/div/div[10]/label")).Click();
-                        break;
-                    case 11:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[25]/div/div[11]/label")).Click();
-                        break;
-                    case 12:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[25]/div/div[12]/label")).Click();
-                        break;
-                }
-            }
-        }
-
-        public void AddPremises()
-        {
-
-            for (int i = 0; i < Premises.Length; i++)
-            {
-                switch (Premises[i])
-                {
-                    case 1:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[27]/div/div[1]/label")).Click();
-                        break;
-                    case 2:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[27]/div/div[2]/label")).Click();
-                        break;
-                    case 3:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[27]/div/div[3]/label")).Click();
-                        break;
-                    case 4:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[27]/div/div[4]/label")).Click();
-                        break;
-                    case 5:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[27]/div/div[5]/label")).Click();
-                        break;
-                    case 6:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[27]/div/div[6]/label")).Click();
-                        break;
-                    case 7:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[27]/div/div[7]/label")).Click();
-                        break;
-                    case 8:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[27]/div/div[8]/label")).Click();
-                        break;
-                }
-            }
-        }
-
-        public void EquipmentAdd()
-        {
-
-            for (int i = 0; i < AddEquipment.Length; i++)
-            {
-                switch (AddEquipment[i])
-                {
-                    case 1:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[1]/label")).Click();
-                        break;
-                    case 2:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[2]/label")).Click();
-                        break;
-                    case 3:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[3]/label")).Click();
-                        break;
-                    case 4:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[4]/label")).Click();
-                        break;
-                    case 5:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[5]/label")).Click();
-                        break;
-                    case 6:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[6]/label")).Click();
-                        break;
-                    case 7:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[7]/label")).Click();
-                        break;
-                    case 8:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[8]/label")).Click();
-                        break;
-                    case 9:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[9]/label")).Click();
-                        break;
-                    case 10:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[10]/label")).Click();
-                        break;
-                    case 11:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[11]/label")).Click();
-                        break;
-                    case 12:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[12]/label")).Click();
-                        break;
-                    case 13:
-                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[29]/div/div[13]/label")).Click();
-                        break;
-                }
-            }
-        }
-
-        public void SecuritySystems()
-        {
-            for (int i = 0; i < Security.Length; i++)
-            {
-                switch (Security[i])
                 {
                     case 1:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[31]/div/div[1]/label")).Click();
@@ -474,6 +407,116 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                     case 5:
                         Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[31]/div/div[5]/label")).Click();
                         break;
+                    case 6:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[31]/div/div[6]/label")).Click();
+                        break;
+                    case 7:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[31]/div/div[7]/label")).Click();
+                        break;
+                    case 8:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[31]/div/div[8]/label")).Click();
+                        break;
+                }
+            }
+        }
+
+        public void AddPremises()
+        {
+
+            for (int i = 0; i < Premises.Length; i++)
+            {
+                switch (Premises[i])
+                {
+                    case 1:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[33]/div/div[1]/label")).Click();
+                        break;
+                    case 2:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[33]/div/div[2]/label")).Click();
+                        break;
+                    case 3:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[33]/div/div[3]/label")).Click();
+                        break;
+                    case 4:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[33]/div/div[4]/label")).Click();
+                        break;
+                    case 5:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[33]/div/div[5]/label")).Click();
+                        break;
+                    case 6:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[33]/div/div[6]/label")).Click();
+                        break;
+                    case 7:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[33]/div/div[7]/label")).Click();
+                        break;
+                }
+            }
+        }
+
+        public void EquipmentAdd()
+        {
+
+            for (int i = 0; i < AddEquipment.Length; i++)
+            {
+                switch (AddEquipment[i])
+                {
+                    case 1:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[35]/div/div[1]/label")).Click();
+                        break;
+                    case 2:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[35]/div/div[2]/label")).Click();
+                        break;
+                    case 3:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[35]/div/div[3]/label")).Click();
+                        break;
+                    case 4:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[35]/div/div[4]/label")).Click();
+                        break;
+                    case 5:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[35]/div/div[5]/label")).Click();
+                        break;
+                    case 6:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[35]/div/div[6]/label")).Click();
+                        break;
+                    case 7:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[35]/div/div[7]/label")).Click();
+                        break;
+                    case 8:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[35]/div/div[8]/label")).Click();
+                        break;
+                    case 9:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[35]/div/div[9]/label")).Click();
+                        break;
+                    case 10:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[35]/div/div[10]/label")).Click();
+                        break;
+                    case 11:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[35]/div/div[11]/label")).Click();
+                        break;
+                }
+            }
+        }
+
+        public void SecuritySystems()
+        {
+            for (int i = 0; i < Security.Length; i++)
+            {
+                switch (Security[i])
+                {
+                    case 1:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[37]/div/div[1]/label")).Click();
+                        break;
+                    case 2:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[37]/div/div[2]/label")).Click();
+                        break;
+                    case 3:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[37]/div/div[3]/label")).Click();
+                        break;
+                    case 4:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[37]/div/div[4]/label")).Click();
+                        break;
+                    case 5:
+                        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[37]/div/div[5]/label")).Click();
+                        break;
                 }
             }
         }
@@ -483,31 +526,31 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             switch (EnergyClass)
             {
                 case 1:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[33]/div/div[1]/div[2]")).Click();
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/div/div[1]/div[2]")).Click();
                     break;
                 case 2:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[33]/div/div[2]/div[2]")).Click();
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/div/div[2]/div[2]")).Click();
                     break;
                 case 3:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[33]/div/div[3]/div[2]")).Click();
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/div/div[3]/div[2]")).Click();
                     break;
                 case 4:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[33]/div/div[4]/div[2]")).Click();
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/div/div[4]/div[2]")).Click();
                     break;
                 case 5:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[33]/div/div[5]/div[2]")).Click();
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/div/div[5]/div[2]")).Click();
                     break;
                 case 6:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[33]/div/div[6]/div[2]")).Click();
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/div/div[6]/div[2]")).Click();
                     break;
                 case 7:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[33]/div/div[7]/div[2]")).Click();
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/div/div[7]/div[2]")).Click();
                     break;
                 case 8:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[33]/div/div[8]/div[2]")).Click();
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/div/div[8]/div[2]")).Click();
                     break;
                 case 9:
-                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[33]/div/div[9]/div[2]")).Click();
+                    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[39]/div/div[9]/div[2]")).Click();
                     break;
             }
         }
@@ -522,7 +565,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         {
             if (Exchange == true)
             {
-                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[34]/div/div/div/label")).Click();
+                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[40]/div/div/div/label")).Click();
             }
             else
                 return;
@@ -531,7 +574,9 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public void Auctioner()
         {
             if (Auction == true)
-            { Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[35]/div/div/div/label")).Click(); }
+            { 
+                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[41]/div/div/div/label")).Click(); 
+            }
             else
                 return;
         }
@@ -596,23 +641,22 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                 }
             }
         }
-
          public void Description()
         { 
             
             if (Language == "LT")
             {
-                Driver.FindElement(By.Name("notes_lt")).SendKeys(DescriptionFlatLT.LongDescription);
+                Driver.FindElement(By.Name("notes_lt")).SendKeys(DescriptionHouseLT.LongDescription);
             }
             else if (Language == "EN")
             {
                 Driver.FindElement(By.ClassName("lang-en-label")).Click();
-                Driver.FindElement(By.Name("notes_en")).SendKeys(DescriptionFlatEN.LongDescription);
+                Driver.FindElement(By.Name("notes_en")).SendKeys(DescriptionHouseEN.LongDescription);
             }
             else if (Language == "RU")
             {
                 Driver.FindElement(By.ClassName("lang-ru-label")).Click();
-                Driver.FindElement(By.Name("notes_ru")).SendKeys(DescriptionFlatRU.LongDescription);
+                Driver.FindElement(By.Name("notes_ru")).SendKeys(DescriptionHouseRU.LongDescription);
             }
          }
     }

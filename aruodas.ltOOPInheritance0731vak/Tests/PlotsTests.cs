@@ -10,11 +10,10 @@ using OpenQA.Selenium.DevTools.V114.FedCm;
 using aruodas.ltOOPInheritance0731vak.Helpers;
 using aruodas.ltOOPInheritance0731vak.Models;
 using OpenQA.Selenium.Support.UI;
-using aruodas.ltOOPInheritance0731vak.Helpers.Garage;
 
 namespace aruodas.ltOOPInheritance0731vak.Tests
 {
-    internal class VacantLandTests
+    internal class PlotsTests
     {
         public static IWebDriver driver;
 
@@ -33,7 +32,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             string Area = "50"; // Plotas
             int[] WhatPurpose = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; // Paskirtis: 1. Namų valda; 2. Daugiabučių statyba; 3. Žemės ūkio; 4. Sklypas soduose; 5. Miškų ūkio; 6. Pramonės; 7. Sandėliavimo; 8. Komercinė; 9. Rekreacinė; 10. Kita
             int[] DetailsDescription = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 }; // Ypatybės: 1. Elektra; 2. Dujos; 3. Vanduo; 4. Kraštinis sklypas; 5. Greta miško; 6. Be pastatų; 7. Geodeziniai matavimai; 8. Su pakrante; 9. Asfaltuotas privažiavimas; 10. Domina keitimas; 11. Varžytinės/Aukcionas
-            string Photo = "C:\\Users\\user\\Desktop\\kauno-r-sav-virbaliskiu-k-metu-g-namu.jpg";// Objekto nuotrauka
+            string Photo = "C:\\Users\\user\\Desktop\\Aruodas\\Garaz\\kauno-r-sav-virbaliskiu-k-metu-g-namu.jpg";// Objekto nuotrauka
             string YoutubeVideo = "https://www.youtube.com/watch?v=31gM5gjw8A8"; // Youtube nuoroda
             string TripleDTour = "https://www.youtube.com/watch?v=31gM5gjw8A8"; //3D nuoroda
             string Price = "500000"; // Kaina
@@ -43,7 +42,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
             bool CheckChat = false; // Sutinku su portalo taisyklėmis
 
-            VacantLand v = new VacantLand(Language, Region, Settlement, Microdistrict, Street, Number, VisibleNumber, RC, VisibleRC, Area, WhatPurpose, DetailsDescription, Photo,
+            Plots v = new Plots(Language, Region, Settlement, Microdistrict, Street, Number, VisibleNumber, RC, VisibleRC, Area, WhatPurpose, DetailsDescription, Photo,
                  YoutubeVideo, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
 
             v.fill();
@@ -74,7 +73,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
             bool CheckChat = false; // Sutinku su portalo taisyklėmis
 
-            VacantLand v = new VacantLand(Language, Region, Settlement, Microdistrict, Street, Number, VisibleNumber, RC, VisibleRC, Area, WhatPurpose, DetailsDescription, Photo,
+            Plots v = new Plots(Language, Region, Settlement, Microdistrict, Street, Number, VisibleNumber, RC, VisibleRC, Area, WhatPurpose, DetailsDescription, Photo,
                  YoutubeVideo, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
 
             v.fill();
@@ -105,7 +104,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
             bool CheckChat = false; // Sutinku su portalo taisyklėmis
 
-            VacantLand v = new VacantLand(Language, Region, Settlement, Microdistrict, Street, Number, VisibleNumber, RC, VisibleRC, Area, WhatPurpose, DetailsDescription, Photo,
+            Plots v = new Plots(Language, Region, Settlement, Microdistrict, Street, Number, VisibleNumber, RC, VisibleRC, Area, WhatPurpose, DetailsDescription, Photo,
                  YoutubeVideo, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
 
             v.fill();
@@ -136,7 +135,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             bool CheckEmail = true; // Išjungti pokalbių ("chat") funkciją skelbime
             bool CheckChat = false; // Sutinku su portalo taisyklėmis
 
-            VacantLand v = new VacantLand(Language, Region, Settlement, Microdistrict, Street, Number, VisibleNumber, RC, VisibleRC, Area, WhatPurpose, DetailsDescription, Photo,
+            Plots v = new Plots(Language, Region, Settlement, Microdistrict, Street, Number, VisibleNumber, RC, VisibleRC, Area, WhatPurpose, DetailsDescription, Photo,
                  YoutubeVideo, TripleDTour, Price, PhoNo, Email, CheckRules, CheckEmail, CheckChat);
 
             v.fill();

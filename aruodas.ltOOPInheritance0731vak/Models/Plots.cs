@@ -21,7 +21,7 @@ using aruodas.ltOOPInheritance0731vak.Helpers.Garage;
 
 namespace aruodas.ltOOPInheritance0731vak.Models
 {
-    internal class VacantLand : RealEstate
+    internal class Plots : RealEstate
     {
         public string Language { get; set; }
         public string Number { get; set; }
@@ -39,7 +39,7 @@ namespace aruodas.ltOOPInheritance0731vak.Models
         public string Email { get; set; }
 
 
-        public VacantLand(string language, string region, string settlement, string microdistrict, string street, string number, bool visibleNumber, string rc, bool visibleRC, string area, int[] whatPurpose,
+        public Plots(string language, string region, string settlement, string microdistrict, string street, string number, bool visibleNumber, string rc, bool visibleRC, string area, int[] whatPurpose,
             int[] detailsDescription, string photo, string youtubeVideo, string tripleDTour, string price, string phoNo, string email, bool checkRules, bool checkEmail, bool checkChat)
             : base(region, settlement, microdistrict, street, checkRules, checkEmail, checkChat)
         {
