@@ -19,12 +19,12 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             string Microdistrict = "Lazdynai"; // Mikrorajonas
             string Street = "Raguvos"; // Gatvė
             string Number = "777"; // Objekto numeris
-            bool VisibleNumber = false; //Rodyti objekto numerį (true/false)
+            bool VisibleNumber = true; //Rodyti objekto numerį (true/false)
             string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
             bool VisibleRC = true; // Rodyti unikalų numerį
             string Area = "50"; // Plotas
             string TotalFloors = "1"; // Viso aukštų
-            string PlotArea = "45"; // Žemės plotas
+            string PlotArea = "78"; // Žemės plotas
             bool WithoutLand = false; // Nėra žemės
             string YearBuilt = "1984"; // Pastatymo metai
             bool Renovated = true; // Ar renovuotas? (true/false)
@@ -67,15 +67,15 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             string Language = "EN";// Kalba: 1. LT; 2. EN; 3. RU
             string Region = "Kaunas"; // Miestas arba rajonas
             string Settlement = "Kauno"; // Miestas arba kaimas
-            string Microdistrict = "Eguliai"; // Mikrorajonas
+            string Microdistrict = "Eiguliai"; // Mikrorajonas
             string Street = "Baranausko"; // Gatvė
             string Number = "55"; // Objekto numeris
-            bool VisibleNumber = false; //Rodyti objekto numerį (true/false)
+            bool VisibleNumber = true; //Rodyti objekto numerį (true/false)
             string RC = "1234 - 5678 - 9011:4660"; //Unikalus daikto numeris
             bool VisibleRC = true; // Rodyti unikalų numerį
             string Area = "50"; // Plotas
             string TotalFloors = "1"; // Viso aukštų
-            string PlotArea = "45"; // Žemės plotas
+            string PlotArea = "78"; // Žemės plotas
             bool WithoutLand = false; // Nėra žemės
             string YearBuilt = "1984"; // Pastatymo metai
             bool Renovated = true; // Ar renovuotas? (true/false)
@@ -107,7 +107,7 @@ namespace aruodas.ltOOPInheritance0731vak.Tests
             string PhoNo = "+37065432107"; // Telefono numeris
 
             House h = new House(Language, Region, Settlement, Microdistrict, Street, Number, VisibleNumber, RC, VisibleRC, Area, TotalFloors, PlotArea, WithoutLand, YearBuilt, Renovated, WhenRenovated, BuildingType, HouseType, Equipment, Heating, Details, RoomCount,
-                 WaterBody, DistanceFromWater, WaterSystem, Properties, Premises, AddEquipment, Security, EnergyClass, Exchange, Auction, FlatPhoto, Youtube, TripleDTour, Price, Email, CheckRules, CheckEmail, CheckChat, PhoNo);
+                WaterBody, DistanceFromWater, WaterSystem, Properties, Premises, AddEquipment, Security, EnergyClass, Exchange, Auction, FlatPhoto, Youtube, TripleDTour, Price, Email, CheckRules, CheckEmail, CheckChat, PhoNo);
 
             h.fill();
         }

@@ -114,7 +114,8 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             ToggleVisibleNumber();
             Driver.FindElement(By.Name("RCNumber")).SendKeys(this.RC);
             ToggleVisibleRC();
-            Driver.FindElement(By.Name("FAreaLot")).SendKeys(this.Area);
+            Driver.FindElement(By.XPath("//*[@id=\"fieldFAreaOverAll\"]")).SendKeys(this.Area);
+            PArea();
             DetailsOnOff();
             Heat();
             RoomNmbr();
@@ -192,6 +193,20 @@ namespace aruodas.ltOOPInheritance0731vak.Models
             }
         }
 
+        public void PArea()
+        {
+            Driver.FindElement(By.XPath("//*[@id=\"fieldFAreaLot\"]")).SendKeys(this.PlotArea);
+            if (WithoutLand == false)
+            {
+                return;
+            }
+            else
+            {
+                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[15]/div/div/label")).Click();
+
+            }
+        }
+
         public void RoomNmbr()
         {
             Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[25]/div/span/input")).SendKeys(RoomCount);
@@ -216,7 +231,6 @@ namespace aruodas.ltOOPInheritance0731vak.Models
                     break;
             }
         }
-
         public void WaterSys()
         {
 
